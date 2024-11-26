@@ -386,6 +386,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 541278091117595729, guid: 6895952eb67db8d4a94d80e8faeabb7b, type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ffda28a04613b898821e6e0732bc3c3, type: 2}
+    - target: {fileID: 541278091117595729, guid: 6895952eb67db8d4a94d80e8faeabb7b, type: 3}
+      propertyPath: red
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ffda28a04613b898821e6e0732bc3c3, type: 2}
+    - target: {fileID: 541278091117595729, guid: 6895952eb67db8d4a94d80e8faeabb7b, type: 3}
       propertyPath: door
       value: 
       objectReference: {fileID: 5404367362708661182, guid: 463eb2f15d2f2a63b8d7ed7dc3e58937, type: 3}
@@ -393,6 +401,34 @@ PrefabInstance:
       propertyPath: room
       value: 
       objectReference: {fileID: 3940720479200753828, guid: 141f8688efc6cdfb6961ab9fe73a4215, type: 3}
+    - target: {fileID: 541278091117595729, guid: 6895952eb67db8d4a94d80e8faeabb7b, type: 3}
+      propertyPath: green
+      value: 
+      objectReference: {fileID: 2100000, guid: ab414b72cce42f0629f4694c140771e9, type: 2}
+    - target: {fileID: 541278091117595729, guid: 6895952eb67db8d4a94d80e8faeabb7b, type: 3}
+      propertyPath: length
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 541278091117595729, guid: 6895952eb67db8d4a94d80e8faeabb7b, type: 3}
+      propertyPath: mats.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 541278091117595729, guid: 6895952eb67db8d4a94d80e8faeabb7b, type: 3}
+      propertyPath: 'mats.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ffda28a04613b898821e6e0732bc3c3, type: 2}
+    - target: {fileID: 541278091117595729, guid: 6895952eb67db8d4a94d80e8faeabb7b, type: 3}
+      propertyPath: 'mats.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ab414b72cce42f0629f4694c140771e9, type: 2}
+    - target: {fileID: 541278091117595729, guid: 6895952eb67db8d4a94d80e8faeabb7b, type: 3}
+      propertyPath: 'mats.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ef0763ee6e975ab6aa25d2003546f9ef, type: 2}
+    - target: {fileID: 541278091117595729, guid: 6895952eb67db8d4a94d80e8faeabb7b, type: 3}
+      propertyPath: 'mats.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5cfb085bada945f559e49c1971cf4e1e, type: 2}
     - target: {fileID: 2315928344991685803, guid: 6895952eb67db8d4a94d80e8faeabb7b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
