@@ -17,6 +17,7 @@ public class Generate : MonoBehaviour
     void Start()
     {
         size = StartRenderer.bounds.size;
+        Debug.Log(size.x);
         Instantiate(StartRoom, new Vector3(0, 0, 0), new Quaternion(0,180,0,1), this.transform);
 
         GameObject previousRoom = Rooms[UnityEngine.Random.Range(0, Rooms.Length)];
@@ -24,14 +25,14 @@ public class Generate : MonoBehaviour
             {
                 if (UnityEngine.Random.Range(0f, 1f) < cohesion)
                 {
-                    Instantiate(previousRoom, new Vector3(i * size.x, 0, 0), Quaternion.identity, this.transform);
+                    Instantiate(previousRoom, new Vector3(i * 12.8f, 0, 0), Quaternion.identity, this.transform);
                 }
                 else
                 {
-                    previousRoom = Instantiate(Rooms[UnityEngine.Random.Range(0, Rooms.Length)], new Vector3(i * size.x, 0, 0), Quaternion.identity, this.transform);
+                    previousRoom = Instantiate(Rooms[UnityEngine.Random.Range(0, Rooms.Length)], new Vector3(i * 12.8f, 0, 0), Quaternion.identity, this.transform);
                 }
             }
             
-        Instantiate(StartRoom, new Vector3((nRooms + 1) * size.x, 0, 0), Quaternion.identity, this.transform);
+        Instantiate(StartRoom, new Vector3((nRooms + 1) * 12.8f, 0, 0), Quaternion.identity, this.transform);
     }
 }
