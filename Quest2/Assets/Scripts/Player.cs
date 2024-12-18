@@ -1,3 +1,7 @@
+/**
+* Player Class
+* Represents the Player (Priestess)
+*/
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -6,6 +10,7 @@ public class Player : MonoBehaviour
     CharacterController characterController;
     [SerializeField]
     float speed = 5f;
+
     void Start()
     {
         
