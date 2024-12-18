@@ -32,6 +32,6 @@ public class Generate : MonoBehaviour
                 }
             }
             
-        Instantiate(StartRoom, new Vector3((nRooms + 1) * size.x, 0, 0), Quaternion.identity, this.transform);
+        Instantiate(StartRoom, new Vector3((nRooms + 1) * size.x + 100, 0, 0), Quaternion.identity, this.transform);
     }
 }
