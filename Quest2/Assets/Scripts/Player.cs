@@ -6,7 +6,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField]
+    CharacterController characterController;
+    [SerializeField]
+    float speed = 5f;
+
     void Start()
     {
         
@@ -15,6 +19,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+        characterController.Move(move*Time.deltaTime*speed);
     }
 }
