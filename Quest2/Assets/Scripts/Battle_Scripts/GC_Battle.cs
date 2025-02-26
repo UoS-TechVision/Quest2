@@ -3,6 +3,7 @@
 * Controls the flow of battle
 */
 using UnityEngine;
+using System.Collections;
 
 public enum BattleState {Start, PlayerTurn, EnemyTurn, WON, LOST}
 
@@ -36,7 +37,7 @@ public class GC_Battle : MonoBehaviour
     IEnumerator SetUpBattle()
     {
         GameObject playerGO = Instantiate(playerObj, playerSpawnPos);
-        playerUnit = playerGO.getComponent<Unit>();
+        playerUnit = playerGO.GetComponent<Unit>();
 
 
         GameObject enemyGO = Instantiate(enemyObj, enemySpawnPos);
@@ -60,8 +61,8 @@ public class GC_Battle : MonoBehaviour
     }
 
 
-    void PlayerSelectAttack(){
-        
+    private int PlayerSelectAttack(){
+        return 0;
     }
 
     void PlayerTurn()
