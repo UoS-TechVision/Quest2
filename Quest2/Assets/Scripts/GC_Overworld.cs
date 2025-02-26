@@ -60,7 +60,7 @@ public class GC_Overworld : MonoBehaviour
         BattleInfo.difficultyScaling = 100; 
 
         //sets up callback once scene is loaded -> call OnBattleSceneLoaded
-        SceneManager.sceneLoaded += OnBattleSceneLoaded(SceneManager.GetSceneByName(battleScene), LoadSceneMode.Single);
+        SceneManager.sceneLoaded += OnBattleSceneLoaded;
 
         //Load the Battle Scene
         Debug.Log("Transitioning to Battle Scene!");
@@ -72,8 +72,11 @@ public class GC_Overworld : MonoBehaviour
         Debug.Log("Battle Scene Loaded!");
 
         if (scene.name == battleScene){
+
+            //Unregister the callback
+            SceneManager.sceneLoaded -= OnBattleSceneLoaded;            
             //Get the Battle Controller
-            GC_Battle battleController = GameObject.FindObjectOfType<GC_Battle>();
+            GC_Battle battleController = GameObject.FindFirstObjectByType<GC_Battle>();
             if (battleController != null){   
                 //Pass the player reference to the Battle Controller
                 battleController.SetPlayerReference(GameObject.FindWithTag("Player"));
