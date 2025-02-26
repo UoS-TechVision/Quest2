@@ -75,9 +75,9 @@ public class GC_Battle : MonoBehaviour
             return;
         }
 
-        int damage = PlayerSelectAttack()
+        int damage = PlayerSelectAttack();
         
-        StartCoroutine(PlayerAttack())
+        StartCoroutine(PlayerAttack());
     }
 
 
