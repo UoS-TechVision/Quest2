@@ -14,17 +14,24 @@ public class MonsterSpawner : MonoBehaviour
 
     void SpawnMonsters()
     {
-        Vector3 roomPosition = transform.position; // Base position of the room
+        Vector3 roomPosition = transform.position; // Room center
+        float totalWidth = (gridWidth - 1) * cellSize; // Total grid width
+        float totalHeight = (gridHeight - 1) * cellSize; // Total grid height
+
+        Vector3 bottomLeft = roomPosition - new Vector3(totalWidth / 2, 0, totalHeight / 2);
+        int monstersSpawned = 0; // Track how many monsters have been spawned
 
         for (int x = 0; x < gridWidth; x++)
         {
             for (int y = 0; y < gridHeight; y++)
             {
-                // Random chance to spawn a monster (adjust probability as needed)
-                if (Random.value > 0.7f)
+                if (monstersSpawned >= 3) return; // Stop spawning if limit reached
+
+                if (Random.value > 0.7f) // Adjust spawn chance as needed
                 {
-                    Vector3 spawnPos = roomPosition + new Vector3(x * cellSize, 0, y * cellSize);
+                    Vector3 spawnPos = bottomLeft + new Vector3(x * cellSize, 0, y * cellSize);
                     Instantiate(monsterPrefab, spawnPos, Quaternion.identity);
+                    monstersSpawned++; // Increase the counter
                 }
             }
         }
