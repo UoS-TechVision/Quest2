@@ -59,9 +59,33 @@ public class GC_Overworld : MonoBehaviour
         //BattleInfo.enemies.Add(new GameObject());   //For now, we'll pretend that enemies are just a generic GameObject...
         BattleInfo.difficultyScaling = 100; 
 
+        //sets up callback once scene is loaded -> call OnBattleSceneLoaded
+        SceneManager.sceneLoaded += OnBattleSceneLoaded;
+
         //Load the Battle Scene
         Debug.Log("Transitioning to Battle Scene!");
         SceneManager.LoadScene(battleScene, LoadSceneMode.Single);
+
+    }
+
+    private void OnBattleSceneLoaded(Scene scene, LoadSceneMode mode){
+        Debug.Log("Battle Scene Loaded!");
+
+        if (scene.name == battleScene){
+
+            //Unregister the callback
+            SceneManager.sceneLoaded -= OnBattleSceneLoaded;            
+            //Get the Battle Controller
+            GC_Battle battleController = GameObject.FindFirstObjectByType<GC_Battle>();
+            if (battleController != null){   
+                //Pass the player reference to the Battle Controller
+                battleController.SetPlayerReference(GameObject.FindWithTag("Player"));
+                battleController.setMobReference(BattleInfo.enemies[0].GetComponent<GameObject>());
+            }
+            else {
+                Debug.LogWarning("Warning: Could not find Battle Controller in Battle Scene!");
+            }
+        }
     }
 
     //Returns True if the player can still continue, False otherwise

@@ -3,6 +3,7 @@
 * Controls the flow of battle
 */
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public enum BattleState {Start, PlayerTurn, EnemyTurn, WON, LOST}
@@ -10,27 +11,27 @@ public enum BattleState {Start, PlayerTurn, EnemyTurn, WON, LOST}
 public class GC_Battle : MonoBehaviour
 {
 
-    public BattleState state; 
+    public BattleState state;
 
     public GameObject playerObj;
     public GameObject enemyObj;
 
     public Transform playerSpawnPos;
-    public Transform enemySpawnPos; 
+    public Transform enemySpawnPos;
 
     Unit playerUnit;
 
-    Unit enemyUnit; 
+    Unit enemyUnit;
 
-
+    [SerializeField] private string overworldScene;    //Name of the Overworld Scene to transition into
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("Loaded with Scaling of " + BattleInfo.difficultyScaling); 
+        Debug.Log("Loaded with Scaling of " + BattleInfo.difficultyScaling);
         state = BattleState.Start;
         StartCoroutine(SetUpBattle());
-        
+
     }
 
 
@@ -41,16 +42,27 @@ public class GC_Battle : MonoBehaviour
 
 
         GameObject enemyGO = Instantiate(enemyObj, enemySpawnPos);
-        enemyUnit = enemyObj.GetComponent<Unit>(); 
-        
-        yield return new WaitForSeconds(2f); 
-        state = BattleState.PlayerTurn; 
+        enemyUnit = enemyObj.GetComponent<Unit>();
+
+        yield return new WaitForSeconds(2f);
+        state = BattleState.PlayerTurn;
         PlayerTurn();
-    } 
+    }
+
+    public void SetPlayerReference(GameObject player)
+    {
+        playerObj = player;
+    }
+
+    public void setMobReference(GameObject mob)
+    {
+        enemyObj = mob;
+    }
 
 
 
-    IEnumerator PlayerAttack(){
+    IEnumerator PlayerAttack()
+    {
         // Damage Enemy
 
 
@@ -61,7 +73,8 @@ public class GC_Battle : MonoBehaviour
     }
 
 
-    private int PlayerSelectAttack(){
+    private int PlayerSelectAttack()
+    {
         return 0;
     }
 
@@ -71,18 +84,28 @@ public class GC_Battle : MonoBehaviour
     }
 
 
-    void onAttackButton(){
-        if (state != BattleState.PlayerTurn){
+    void onAttackButton()
+    {
+        if (state != BattleState.PlayerTurn)
+        {
             return;
         }
 
         int damage = PlayerSelectAttack();
-        
+
         StartCoroutine(PlayerAttack());
     }
 
+    void TransitionToOverworld()
+    {
+        //Ensure we're not trying to transition to a scene that doesn't exist
+        if (string.IsNullOrEmpty(overworldScene))
+        {
+            Debug.LogWarning("Warning: Invalid Overworld Scene Name!");
+            return;
+        }
 
-
-
-
+        //Transition to the Overworld scene
+        SceneManager.LoadScene(overworldScene, LoadSceneMode.Single);
+    }
 }
