@@ -119,68 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!23 &106093868 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1696609737900536387, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
-  m_PrefabInstance: {fileID: 414409383}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &414409383
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 434932572096274117, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434932572096274117, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 434932572096274117, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434932572096274117, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 434932572096274117, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434932572096274117, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434932572096274117, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434932572096274117, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434932572096274117, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434932572096274117, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 955572851987694719, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
-      propertyPath: m_Name
-      value: priestess.vox
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
 --- !u!1 &429812158
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +276,8 @@ MonoBehaviour:
   - {fileID: 235832522705377611, guid: 72104a5ea87f6560397c766dbf0db1c1, type: 3}
   - {fileID: 235832522705377611, guid: 72104a5ea87f6560397c766dbf0db1c1, type: 3}
   - {fileID: 4683546231246788857, guid: b093d87c854ea40829d56b79d55a2ab7, type: 3}
-  StartRenderer: {fileID: 106093868}
+  Player: {fileID: 955572851987694719, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
+  size: {x: 0, y: 0, z: 0}
   cohesion: 0
 --- !u!4 &1978062027
 Transform:
@@ -361,4 +300,3 @@ SceneRoots:
   m_Roots:
   - {fileID: 429812161}
   - {fileID: 1978062027}
-  - {fileID: 414409383}

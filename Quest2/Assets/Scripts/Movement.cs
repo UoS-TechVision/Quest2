@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
     private Rigidbody rb;
 
     [SerializeField]
-    private float gridSize = 3f; // The distance between grid points
+    private float gridSize = 1.6f; // The distance between grid points
 
     private Vector3 targetPosition; // The next position to move to
     private bool isMoving = false; // Prevent overlapping movements
