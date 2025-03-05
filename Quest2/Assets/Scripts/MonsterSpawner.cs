@@ -27,7 +27,7 @@ public class MonsterSpawner : MonoBehaviour
             {
                 if (monstersSpawned >= 3) return; // Stop spawning if limit reached
 
-                if (Random.value > 0.7f) // Adjust spawn chance as needed
+                if (Random.value > 0.9f) // Adjust spawn chance as needed
                 {
                     Vector3 spawnPos = bottomLeft + new Vector3(x * cellSize, 0, y * cellSize);
                     Instantiate(monsterPrefab, spawnPos, Quaternion.identity);
