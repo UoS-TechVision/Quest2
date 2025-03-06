@@ -7,14 +7,18 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     private float gridSize = 3f; // The distance between grid points
-
     private Vector3 targetPosition; // The next position to move to
     private bool isMoving = false; // Prevent overlapping movements
+
+    private Transform cameraTransform;
+    private Vector3 cameraOffset;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         targetPosition = rb.position; // Initialize the target position to the starting position
+        cameraTransform = transform.GetChild(0);
+        cameraOffset = cameraTransform.localPosition;
     }
 
     // Update is called once per frame
@@ -22,24 +26,29 @@ public class Movement : MonoBehaviour
     {
         if (isMoving) return; // Ignore input if already moving
 
+        // Handle movement directions and rotations
         if (Input.GetKeyDown(KeyCode.D))
         {
             targetPosition += new Vector3(gridSize, 0f, 0f); // Move right
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f); // rotate left
             isMoving = true;
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
             targetPosition += new Vector3(-gridSize, 0f, 0f); // Move left
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f); // rotate right
             isMoving = true;
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
             targetPosition += new Vector3(0f, 0f, gridSize); // Move forward
+            transform.rotation = Quaternion.Euler(0f, -90f, 0f); // rotate up
             isMoving = true;
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             targetPosition += new Vector3(0f, 0f, -gridSize); // Move backward
+            transform.rotation = Quaternion.Euler(0f, 90f, 0f); // rotate down
             isMoving = true;
         }
     }
@@ -62,6 +71,15 @@ public class Movement : MonoBehaviour
         {
             rb.MovePosition(targetPosition); // Snap to the exact target position
             isMoving = false; // Allow new inputs
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (cameraTransform != null)
+        {
+            cameraTransform.position = transform.position + cameraOffset;
+            cameraTransform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 }
