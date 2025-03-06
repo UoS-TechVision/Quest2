@@ -515,7 +515,8 @@ MonoBehaviour:
   - {fileID: 235832522705377611, guid: 72104a5ea87f6560397c766dbf0db1c1, type: 3}
   - {fileID: 235832522705377611, guid: 72104a5ea87f6560397c766dbf0db1c1, type: 3}
   - {fileID: 4683546231246788857, guid: b093d87c854ea40829d56b79d55a2ab7, type: 3}
-  StartRenderer: {fileID: 106093868}
+  Player: {fileID: 955572851987694719, guid: 439c60e24175906c89be7ed8fbb0a2ca, type: 3}
+  size: {x: 0, y: 0, z: 0}
   cohesion: 0
 --- !u!4 &1978062027
 Transform:
