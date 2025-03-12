@@ -10,10 +10,13 @@ public class Player : MonoBehaviour
     CharacterController characterController;
     [SerializeField]
     float speed = 5f;
+    
+    [SerializeField]
+    private Stats stats = new Stats();
 
     void Start()
     {
-        
+        Debug.Log(stats.GetStats());
     }
 
     // Update is called once per frame
