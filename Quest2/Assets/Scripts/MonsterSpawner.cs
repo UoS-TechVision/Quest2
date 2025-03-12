@@ -6,7 +6,7 @@ public class MonsterSpawner : MonoBehaviour
     public int gridWidth = 8;
     public int gridHeight = 5;
     public float cellSize = 1.5f; // Adjust based on room size
-
+    public GameObject sceneChangePrefab; // Assign in Unity Inspector
     void Start()
     {
         SpawnMonsters();
@@ -32,6 +32,12 @@ public class MonsterSpawner : MonoBehaviour
                     Vector3 spawnPos = bottomLeft + new Vector3(x * cellSize, 0, y * cellSize);
                     Instantiate(monsterPrefab, spawnPos, Quaternion.identity);
                     monstersSpawned++; // Increase the counter
+
+                    GameObject newSceneTrigger = Instantiate(monsterPrefab, spawnPos, Quaternion.identity);
+
+                    SceneChangeTrigger scriptComponent = newSceneTrigger.GetComponent<SceneChangeTrigger>();
+                    scriptComponent.battleScene = "devBattle";
+                    scriptComponent.specifiedMonster = monsterPrefab;
                 }
             }
         }
