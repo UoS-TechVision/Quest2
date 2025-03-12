@@ -6,6 +6,8 @@ using System.Linq;
 
 public class GenerateMaze : MonoBehaviour
 {
+    public BossSpawner bossSpawnerScript;
+
     [SerializeField]
     int length; //number of rows/columns
     [SerializeField]
@@ -24,19 +26,28 @@ public class GenerateMaze : MonoBehaviour
         //place rooms/all doors
         grid = new GameObject[length,length];
         size = roomRenderer.bounds.size;
+        int count = 0;
         for (int i = 0; i < length; i++)
         {
             for (int j = 0; j < length; j++)
             {
                 grid[i,j] = Instantiate(room, new Vector3(i*size.x,0,j*size.z), Quaternion.identity, this.transform); //add room to grid
                 GameObject currentRoom = grid[i,j];
+                if (count % 2 = 0){
+                    bossSpawnerScript.roomTypes.Add(currentRoom.name)
+                }
+                else{
+                    bossSpawnerScript.roomTypes.Add("")
+                }
                 Material mat = mats[UnityEngine.Random.Range(0,mats.Length)];
                 currentRoom.GetComponent<MeshRenderer>().material = mat;
                 for (int k = 0; k < 4; k++)
                 {
+                    //xheck this :l
                     Instantiate(door, currentRoom.transform.position, Quaternion.Euler(0, k*90, 0), currentRoom.transform).name = k.ToString(); //place doors in room
                     currentRoom.transform.Find(k.ToString()).gameObject.GetComponent<MeshRenderer>().material = mat;
                 }
+                count++;
             }
         }
 
