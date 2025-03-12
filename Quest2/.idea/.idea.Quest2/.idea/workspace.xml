@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3d43bec1-22c6-4b6c-b1df-377ac143d8fa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Quest2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Quest2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Newrocker-Gy5a SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Newrocker-Gy5a SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Newrocker-Gy5a.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Newrocker-Gy5a.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +19,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -91,6 +96,8 @@
       <workItem from="1734539179934" duration="2400000" />
       <workItem from="1741188718451" duration="2108000" />
       <workItem from="1741192442729" duration="327000" />
+      <workItem from="1741795619201" duration="1494000" />
+      <workItem from="1741797618564" duration="756000" />
     </task>
     <servers />
   </component>
@@ -107,5 +114,24 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/ButtonSound.cs</url>
+          <line>11</line>
+          <properties documentPath="C:\GitHub\Quest2\Quest2\Assets\Scripts\ButtonSound.cs" containingFunctionPresentation="Method 'Start'">
+            <startOffsets>
+              <option value="328" />
+            </startOffsets>
+            <endOffsets>
+              <option value="329" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
