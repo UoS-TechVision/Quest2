@@ -20,6 +20,8 @@ public class GC_Battle : MonoBehaviour
     public Transform enemySpawnPos;
 
     Unit playerUnit;
+    public GC_BattleHUD playerHUD;
+    public GC_BattleHUD enemyHUD;
 
     Unit enemyUnit;
 
@@ -43,6 +45,9 @@ public class GC_Battle : MonoBehaviour
 
         GameObject enemyGO = Instantiate(enemyObj, enemySpawnPos);
         enemyUnit = enemyObj.GetComponent<Unit>();
+
+        playerHUD.SetHUD(playerUnit);
+        enemyHUD.SetHUD(enemyUnit);
 
         yield return new WaitForSeconds(2f);
         state = BattleState.PlayerTurn;
