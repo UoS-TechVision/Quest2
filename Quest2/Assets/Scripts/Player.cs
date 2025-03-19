@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     float speed = 5f;
     
-    [SerializeField]
     private Stats stats = new Stats();
 
     void Start()
