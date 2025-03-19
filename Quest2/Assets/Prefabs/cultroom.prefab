@@ -101,4 +101,4 @@ MonoBehaviour:
   gridHeight: 5
   cellSize: 1.5
   bossPrefab: {fileID: 5123979057409095958, guid: 8c03acba1e5af4fd0ab4a75681d2262a, type: 3}
-  roomTag: Room
+  spawnPoint: {fileID: 0}
