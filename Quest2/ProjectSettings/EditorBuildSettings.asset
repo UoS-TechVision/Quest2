@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProcGenComplete.unity
     guid: c42bf14b8365f487589bd42127a36b8e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/dev/devOverworld.unity
     guid: dd4afa78b099ddaefab3f79a46e125b9
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/dev/devBattle.unity
     guid: 848ffaccb62941e85ac0a59d6d5f5737
   m_configObjects:
