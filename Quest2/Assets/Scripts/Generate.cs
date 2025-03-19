@@ -35,6 +35,19 @@ public class Generate : MonoBehaviour
                     Instantiate(Player, bottomLeft, Quaternion.identity);
                 }
 
+                // Deactivate BossSpawner script on non-5th rooms
+                BossSpawner bossSpawner = previousRoom.GetComponent<BossSpawner>();
+                if (i % 5 != 0 || i == 0) 
+                {
+                    if (bossSpawner != null) 
+                    {
+                        bossSpawner.enabled = false;
+                    }
+                } else {
+                    // Enable BossSpawner script on 5th rooms
+                    bossSpawner.enabled = true;
+                }
+
                 if (UnityEngine.Random.Range(0f, 1f) < cohesion)
                 {
                     Instantiate(previousRoom, new Vector3(i * 12.8f, 0, 0), Quaternion.identity, this.transform);
