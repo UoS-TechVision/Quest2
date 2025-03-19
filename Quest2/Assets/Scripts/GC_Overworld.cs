@@ -76,11 +76,11 @@ public class GC_Overworld : MonoBehaviour
             //Unregister the callback
             SceneManager.sceneLoaded -= OnBattleSceneLoaded;            
             //Get the Battle Controller
-            GC_Battle battleController = GameObject.FindFirstObjectByType<GC_Battle>();
-            if (battleController != null){   
-                //Pass the player reference to the Battle Controller
-                battleController.SetPlayerReference(GameObject.FindWithTag("Player"));
-                battleController.setMobReference(BattleInfo.enemies[0].GetComponent<GameObject>());
+            Transfer transferObj = GameObject.FindFirstObjectByType<Transfer>();
+            if (transferObj != null){
+                //Pass transferObj player reference to the Battle Controller
+                transferObj.setPlayerObj(GameObject.FindWithTag("Player"));
+                transferObj.setEnemyObj(BattleInfo.enemies[0].GetComponent<GameObject>());
             }
             else {
                 Debug.LogWarning("Warning: Could not find Battle Controller in Battle Scene!");

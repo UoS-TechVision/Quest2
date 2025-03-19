@@ -28,5 +28,14 @@ public class Player : MonoBehaviour
 
         characterController.Move(move * (Time.deltaTime * speed));
         Debug.unityLogger.Log(stats.ToString());
+
+        if (Physics.CheckSphere(this.transform.position, 2f, 6)){
+            // Needs filling
+        }
+
     }
+
+
+
+
 }

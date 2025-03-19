@@ -32,6 +32,9 @@ public class GC_Battle : MonoBehaviour
     {
         Debug.Log("Loaded with Scaling of " + BattleInfo.difficultyScaling);
         state = BattleState.Start;
+        Transfer transfer = GameObject.FindAnyObjectByType<Transfer>(); 
+        playerObj = transfer.playerObj;
+        enemyObj = transfer.enemyObj;
         StartCoroutine(SetUpBattle());
 
     }
@@ -53,18 +56,6 @@ public class GC_Battle : MonoBehaviour
         state = BattleState.PlayerTurn;
         PlayerTurn();
     }
-
-    public void SetPlayerReference(GameObject player)
-    {
-        playerObj = player;
-    }
-
-    public void setMobReference(GameObject mob)
-    {
-        enemyObj = mob;
-    }
-
-
 
     IEnumerator PlayerAttack()
     {
