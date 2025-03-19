@@ -3,23 +3,20 @@
 */
 using UnityEngine;
 
-[System.Serializable] // Allows the stats to be visible in Unity's inspector
-public class Stats
+[System.Serializable]
+public class Stats : MonoBehaviour
 {
-    // Strength is how much damage a standard attack does
-    public int Strength { get; private set; } = 25;
+    [SerializeField] private int strength = 25;
+    [SerializeField] private int mana = 100;
+    [SerializeField] private int skillPoints = 2;
+    [SerializeField] private int health = 100;
     
-    // Skills expend mana
-    public int Mana { get; private set; } = 100;
+    // Public properties with getters and setters
+    public int Strength { get => strength; set => strength = value; }
+    public int Mana { get => mana; set => mana = value; }
+    public int SkillPoints { get => skillPoints; set => skillPoints = value; }
+    public int Health { get => health; set => health = value; }
     
-    // Skill Points are used to allocate skills to the player,
-    // start with 2 that can be allocated to any player stat
-    public int SkillPoints { get; private set; } = 2;
-    
-    // Starting health
-    public int Health { get; set; } = 100;
-
-    // Constructor to initialize stats (useful for different player types or saves)
     public Stats()
     {
     }
@@ -65,7 +62,7 @@ public class Stats
         SkillPoints += points;
     }
 
-    public string GetStats()
+    public string toString()
     {
         return "Strength: " + Strength + " // " +
                "Mana: " + SkillPoints + " // " +

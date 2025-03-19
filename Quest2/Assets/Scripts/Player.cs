@@ -10,12 +10,15 @@ public class Player : MonoBehaviour
     CharacterController characterController;
     [SerializeField]
     float speed = 5f;
-    
-    private Stats stats = new Stats();
-
+	[SerializeField]
+	Stats stats;
+	
     void Start()
     {
-        Debug.Log(stats.GetStats());
+        if (stats == null)
+        {
+            stats = gameObject.AddComponent<Stats>();
+        }
     }
 
     // Update is called once per frame
@@ -23,6 +26,7 @@ public class Player : MonoBehaviour
     {
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        characterController.Move(move*Time.deltaTime*speed);
+        characterController.Move(move * (Time.deltaTime * speed));
+        Debug.unityLogger.Log(stats.ToString());
     }
 }

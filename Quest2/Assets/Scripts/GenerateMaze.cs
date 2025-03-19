@@ -6,7 +6,7 @@ using System.Linq;
 
 public class GenerateMaze : MonoBehaviour
 {
-    public BossSpawner bossSpawnerScript;
+    //public BossSpawner bossSpawnerScript;
 
     [SerializeField]
     int length; //number of rows/columns
@@ -33,11 +33,11 @@ public class GenerateMaze : MonoBehaviour
             {
                 grid[i,j] = Instantiate(room, new Vector3(i*size.x,0,j*size.z), Quaternion.identity, this.transform); //add room to grid
                 GameObject currentRoom = grid[i,j];
-                if (count % 2 = 0){
-                    bossSpawnerScript.roomTypes.Add(currentRoom.name);
+                if (count % 2 == 0){
+                    //bossSpawnerScript.roomTypes.Add(currentRoom.name);
                 }
                 else{
-                    bossSpawnerScript.roomTypes.Add("");
+                    //bossSpawnerScript.roomTypes.Add("");
                 }
                 Material mat = mats[UnityEngine.Random.Range(0,mats.Length)];
                 currentRoom.GetComponent<MeshRenderer>().material = mat;
