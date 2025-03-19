@@ -59,6 +59,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5218332593310352025}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2870587827437642942}
   m_SourcePrefab: {fileID: 100100000, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
 --- !u!1 &235832522705377611 stripped
 GameObject:
@@ -81,3 +84,27 @@ MonoBehaviour:
   gridWidth: 8
   gridHeight: 5
   cellSize: 1.5
+  sceneChangePrefab: {fileID: 0}
+--- !u!1 &9135573345930437010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+  m_PrefabInstance: {fileID: 1118214045323469850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2870587827437642942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9135573345930437010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd58c3696cd5457cb2c69377db79cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridWidth: 8
+  gridHeight: 5
+  cellSize: 1.5
+  bossPrefabs: []
+  roomTag: Room
+  roomTypes: []
