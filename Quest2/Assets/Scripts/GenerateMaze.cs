@@ -33,12 +33,12 @@ public class GenerateMaze : MonoBehaviour
             {
                 grid[i,j] = Instantiate(room, new Vector3(i*size.x,0,j*size.z), Quaternion.identity, this.transform); //add room to grid
                 GameObject currentRoom = grid[i,j];
-                if (count % 2 = 0){
-                    bossSpawnerScript.roomTypes.Add(currentRoom.name);
-                }
-                else{
-                    bossSpawnerScript.roomTypes.Add("");
-                }
+                // if (count % 2 == 0) //add room type to bossSpawnerScript{
+                //     bossSpawnerScript.roomTypes.Add(currentRoom.name);
+                // }
+                // else {
+                //     bossSpawnerScript.roomTypes.Add("");
+                // }
                 Material mat = mats[UnityEngine.Random.Range(0,mats.Length)];
                 currentRoom.GetComponent<MeshRenderer>().material = mat;
                 for (int k = 0; k < 4; k++)
