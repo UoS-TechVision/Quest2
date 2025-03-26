@@ -2,54 +2,74 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    public string unitName;
-    public int unitLevel;
-    public int maxHP;
-    public int currentHP;
-
-    public int maxMana;
-    public int currentMana;
-
-    public int unitDamage;
-    
+    // Default values
+    [SerializeField] private string unitName = "default_name";
+    [SerializeField] private int unitLevel = 1;
     [SerializeField] private int strength = 25;
     [SerializeField] private int mana = 100;
-    [SerializeField] private int skillPoints = 2;
+    [SerializeField] private int skillPoints = 1;
     [SerializeField] private int health = 100;
+    [SerializeField] private int maxHealth = 300;
+    [SerializeField] private int maxMana = 300;
+    [SerializeField] private int maxStrength = 100;
     
     // Public properties with getters and setters
-    public int Strength { get => strength; set => strength = value; }
-    public int Mana { get => mana; set => mana = value; }
-    public int SkillPoints { get => skillPoints; set => skillPoints = value; }
-    public int Health { get => health; set => health = value; }
+    // TODO: validation for set methods below
+    public string UnitName { get => unitName; }
+    public int UnitLevel { get => unitLevel; }
+
+    public int Strength
+    {
+        get => strength;
+        set
+        {
+            if (value > MaxStrength) strength = MaxStrength;
+            else if (value < 0) strength = 0;
+            else strength = value;
+        }
+    }
+
+    public int Mana
+    {
+        get => mana;
+        set
+        {
+            if (value > maxMana) mana = MaxMana;
+            else if (value < 0) mana = 0;
+            else mana = value;
+        }
+    }
+
+    public int SkillPoints { get => skillPoints; set => skillPoints = value < 0 ? 0 : value; }
+    public int Health 
+    { 
+        get => health;
+        set
+        {
+            if (value > maxHealth) health = MaxHealth;
+            else if (value < 0) health = 0;
+            else health = value;
+        } 
+    }
+    public int MaxHealth { get => maxHealth; }
+    public int MaxMana { get => maxMana; }
+    public int MaxStrength { get => maxStrength; }
     
-    public Unit()
-    {
-    }
-
-    public Unit(int strength, int mana, int skillPoints, int health)
-    {
-        Strength = strength;
-        Mana = mana;
-        SkillPoints = skillPoints;
-        Health = health;
-    }
-
     // Add points to a stat
     public bool AllocateStat(string statName)
     {
         // not enough skill points
         if (SkillPoints <= 0) return false;
 
-        if (statName == "strength" && this.Strength < 100) 
+        if (statName == "strength") 
         {
             Strength += 25;
         }
-        else if (statName == "mana" && this.Mana < 300)
+        else if (statName == "mana")
         {
             Mana += 50;
         }
-        else if (statName == "health" && this.Health < 300)
+        else if (statName == "health")
         {
             Health += 50;
         }
@@ -68,7 +88,7 @@ public class Unit : MonoBehaviour
         SkillPoints += points;
     }
 
-    public string toString()
+    public override string ToString()
     {
         return "Strength: " + Strength + " // " +
                "Mana: " + SkillPoints + " // " +
