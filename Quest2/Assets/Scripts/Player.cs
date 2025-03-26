@@ -10,15 +10,9 @@ public class Player : MonoBehaviour
     CharacterController characterController;
     [SerializeField]
     float speed = 5f;
-	[SerializeField]
-	Stats stats;
 	
     void Start()
     {
-        if (stats == null)
-        {
-            stats = gameObject.AddComponent<Stats>();
-        }
     }
 
     // Update is called once per frame
@@ -27,7 +21,6 @@ public class Player : MonoBehaviour
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         characterController.Move(move * (Time.deltaTime * speed));
-        Debug.unityLogger.Log(stats.ToString());
         Collider[] hitArr = Physics.OverlapSphere(this.transform.position, 2f, 6);
 
     }
