@@ -23,14 +23,21 @@ public class GC_BattleHUD : MonoBehaviour
         nameText.text = unit.name;
         levelText.text = "Lvl. " + unit.unitLevel;
 
-        healthText.text = unit.currentHP.ToString() + "/" + unit.maxHP;
+        healthText.text = unit.Health.ToString() + "/" + unit.MaxHealth;
 
 
     }
 
     public void SetHP(Unit unit)
     {
-        healthSlider.value = unit.currentHP;
-        healthText.text = unit.currentHP.ToString() + "/" + unit.maxHP;
+        healthSlider.value = unit.Health;
+        healthText.text = unit.Health.ToString() + "/" + unit.MaxHealth;
+    }
+
+    public void SetMana(Unit unit)
+    {
+        manaSlider.value = unit.Mana;
+
+        manaText.text = unit.Mana.ToString() + "/" + unit.MaxMana;
     }
 }

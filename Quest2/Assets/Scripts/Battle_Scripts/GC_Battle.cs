@@ -76,7 +76,7 @@ public class GC_Battle : MonoBehaviour
     {
         // Damage Enemy
 
-        bool isDead = enemyUnit.TakeDamage(playerUnit.unitDamage);
+        bool isDead = enemyUnit.TakeDamage(playerUnit.Strength);
 
         enemyHUD.SetHP(enemyUnit);
 
@@ -98,14 +98,40 @@ public class GC_Battle : MonoBehaviour
         yield return new WaitForSeconds(2f);
     }
 
+    IEnumerator PlayerSkill()
+    {
+        // Damage Enemy
+        dialogueText.text = "Player used " + playerUnit.SkillName + "!!";
+        bool isDead = enemyUnit.TakeDamage(playerUnit.SkillDamage);
+
+        playerUnit.DeductMana();
+
+        enemyHUD.SetHP(enemyUnit);
+        yield return new WaitForSeconds(1f);
+
+        if (isDead)
+        {
+            state = BattleState.WON;
+            EndBattle();
+        }
+        else
+        {
+            state = BattleState.EnemyTurn;
+            StartCoroutine(EnemyTurn());
+        }
+
+
+        yield return new WaitForSeconds(2f);
+    }
+
 
     IEnumerator EnemyTurn()
     {
-        dialogueText.text = enemyUnit.unitName + " attacks!";
+        dialogueText.text = enemyUnit.name + " attacks!";
 
         yield return new WaitForSeconds(1f);
 
-        bool isDead = playerUnit.TakeDamage(enemyUnit.unitDamage);
+        bool isDead = playerUnit.TakeDamage(enemyUnit.Strength);
         playerHUD.SetHP(playerUnit);
 
         yield return new WaitForSeconds(1f);
@@ -127,7 +153,7 @@ public class GC_Battle : MonoBehaviour
     {
         if (state == BattleState.WON)
         {
-            dialogueText.text = "You have defeated " + enemyUnit.unitName + "!!";
+            dialogueText.text = "You have defeated " + enemyUnit.name + "!!";
         }
         else if (state == BattleState.LOST)
         {
@@ -143,6 +169,17 @@ public class GC_Battle : MonoBehaviour
         }
 
         StartCoroutine(PlayerAttack());
+    }
+
+
+    public void onSkillButton()
+    {
+        if (state != BattleState.PlayerTurn && playerUnit.Mana < playerUnit.SkillCost)
+        {
+            return;
+        }
+
+        StartCoroutine(PlayerSkill());
     }
 
     void TransitionToOverworld()
