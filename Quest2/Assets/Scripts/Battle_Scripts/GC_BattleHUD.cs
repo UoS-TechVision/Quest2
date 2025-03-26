@@ -15,14 +15,29 @@ public class GC_BattleHUD : MonoBehaviour
 
     public void SetHUD(Unit unit)
     {
-        healthSlider.maxValue = unit.maxHP;
-        healthSlider.value = unit.currentHP;
-        manaSlider.maxValue= unit.maxMana;
-        manaSlider.value = unit.currentMana;
+        healthSlider.maxValue = unit.MaxHealth;
+        healthSlider.value = unit.Health;
+        manaSlider.maxValue= unit.MaxMana;
+        manaSlider.value = unit.Mana;
 
         nameText.text = unit.name;
         levelText.text = "Lvl. " + unit.unitLevel;
 
-        
+        healthText.text = unit.Health.ToString() + "/" + unit.MaxHealth;
+
+
+    }
+
+    public void SetHP(Unit unit)
+    {
+        healthSlider.value = unit.Health;
+        healthText.text = unit.Health.ToString() + "/" + unit.MaxHealth;
+    }
+
+    public void SetMana(Unit unit)
+    {
+        manaSlider.value = unit.Mana;
+
+        manaText.text = unit.Mana.ToString() + "/" + unit.MaxMana;
     }
 }

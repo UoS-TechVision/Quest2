@@ -10,15 +10,9 @@ public class Player : MonoBehaviour
     CharacterController characterController;
     [SerializeField]
     float speed = 5f;
-	[SerializeField]
-	Stats stats;
 	
     void Start()
     {
-        if (stats == null)
-        {
-            stats = gameObject.AddComponent<Stats>();
-        }
     }
 
     // Update is called once per frame
@@ -28,6 +22,8 @@ public class Player : MonoBehaviour
 
         characterController.Move(move * (Time.deltaTime * speed));
         Debug.unityLogger.Log(stats.ToString());
+        
+        // Check for collision with monsters
         Collider[] hitArr = Physics.OverlapSphere(this.transform.position, 5f, 6);
         Debug.Log($"Detected {hitArr.Length} colliders in OverlapSphere.");
 
