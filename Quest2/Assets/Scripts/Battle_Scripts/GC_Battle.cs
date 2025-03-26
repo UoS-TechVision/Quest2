@@ -5,6 +5,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using TMPro;
 
 public enum BattleState {Start, PlayerTurn, EnemyTurn, WON, LOST}
 
@@ -25,6 +26,8 @@ public class GC_Battle : MonoBehaviour
 
     Unit enemyUnit;
 
+    public TMP_Text dialogueText;
+
     [SerializeField] private string overworldScene;    //Name of the Overworld Scene to transition into
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,9 +35,9 @@ public class GC_Battle : MonoBehaviour
     {
         Debug.Log("Loaded with Scaling of " + BattleInfo.difficultyScaling);
         state = BattleState.Start;
-        Transfer transfer = GameObject.FindAnyObjectByType<Transfer>(); 
-        playerObj = transfer.playerObj;
-        enemyObj = transfer.enemyObj;
+        //Transfer transfer = GameObject.FindAnyObjectByType<Transfer>(); 
+        playerObj = GameObject.FindGameObjectWithTag("Player");
+        enemyObj = GameObject.FindGameObjectWithTag("Enemy");
         StartCoroutine(SetUpBattle());
 
     }
@@ -42,11 +45,11 @@ public class GC_Battle : MonoBehaviour
 
     IEnumerator SetUpBattle()
     {
-        GameObject playerGO = Instantiate(playerObj, playerSpawnPos);
-        playerUnit = playerGO.GetComponent<Unit>();
+        //GameObject playerGO = Instantiate(playerObj, playerSpawnPos);
+        playerUnit = playerObj.GetComponent<Unit>();
 
 
-        GameObject enemyGO = Instantiate(enemyObj, enemySpawnPos);
+        //GameObject enemyGO = Instantiate(enemyObj, enemySpawnPos);
         enemyUnit = enemyObj.GetComponent<Unit>();
 
         playerHUD.SetHUD(playerUnit);
@@ -54,40 +57,90 @@ public class GC_Battle : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         state = BattleState.PlayerTurn;
+
+        dialogueText.text = "You have encountered a " + enemyObj.name + " . FIGHT!!";
+        yield return new WaitForSeconds(2f);
         PlayerTurn();
+    }
+
+    void PlayerTurn()
+    {
+        // Set player dialogue text
+
+        dialogueText.text = "Choose an action: ";
+
+
     }
 
     IEnumerator PlayerAttack()
     {
         // Damage Enemy
 
+        bool isDead = enemyUnit.TakeDamage(playerUnit.unitDamage);
+
+        enemyHUD.SetHP(enemyUnit);
+
+        dialogueText.text = "Player attacks...";
+        yield return new WaitForSeconds(1f);
+
+        if (isDead)
+        {
+            state = BattleState.WON;
+            EndBattle();
+        }
+        else
+        {
+            state = BattleState.EnemyTurn;
+            StartCoroutine(EnemyTurn());
+        }
+
 
         yield return new WaitForSeconds(2f);
-
-        // CHeck if enemy is dead
-        // Change State based on what happened
     }
 
 
-    private int PlayerSelectAttack()
+    IEnumerator EnemyTurn()
     {
-        return 0;
+        dialogueText.text = enemyUnit.unitName + " attacks!";
+
+        yield return new WaitForSeconds(1f);
+
+        bool isDead = playerUnit.TakeDamage(enemyUnit.unitDamage);
+        playerHUD.SetHP(playerUnit);
+
+        yield return new WaitForSeconds(1f);
+
+        if (isDead)
+        {
+            state = BattleState.LOST;
+            EndBattle();
+        }
+        else
+        {
+            state = BattleState.PlayerTurn;
+            PlayerTurn();
+        }
+
     }
 
-    void PlayerTurn()
+    void EndBattle()
     {
-        // Set player dialogue text
+        if (state == BattleState.WON)
+        {
+            dialogueText.text = "You have defeated " + enemyUnit.unitName + "!!";
+        }
+        else if (state == BattleState.LOST)
+        {
+            dialogueText.text = "You have lost....";
+        }
     }
 
-
-    void onAttackButton()
+    public void onAttackButton()
     {
         if (state != BattleState.PlayerTurn)
         {
             return;
         }
-
-        int damage = PlayerSelectAttack();
 
         StartCoroutine(PlayerAttack());
     }

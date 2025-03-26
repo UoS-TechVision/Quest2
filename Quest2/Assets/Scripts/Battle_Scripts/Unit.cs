@@ -75,6 +75,14 @@ public class Unit : MonoBehaviour
                "Health: " + Health + " // " +
                "Skill Points: " + SkillPoints;
     }
+
+
+    public bool TakeDamage(int damage)
+    {
+        currentHP -= damage;
+
+        return currentHP <= 0;
+    }
     
 }
 
