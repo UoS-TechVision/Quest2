@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         characterController.Move(move * (Time.deltaTime * speed));
-        Debug.unityLogger.Log(stats.ToString());
+        // Debug.unityLogger.Log(stats.ToString());
         
         // Check for collision with monsters
         Collider[] hitArr = Physics.OverlapSphere(this.transform.position, 5f, 6);

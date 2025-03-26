@@ -39,12 +39,6 @@ public class MonsterSpawner : MonoBehaviour
                     monster.transform.Rotate(0, -90, 0); 
 
                     monstersSpawned++; // Increase the counter
-
-                    GameObject newSceneTrigger = Instantiate(monsterPrefab, spawnPos, Quaternion.identity);
-
-                    SceneChangeTrigger scriptComponent = newSceneTrigger.GetComponent<SceneChangeTrigger>();
-                    scriptComponent.battleScene = "devBattle";
-                    scriptComponent.specifiedMonster = monsterPrefab;
                 }
             }
         }
