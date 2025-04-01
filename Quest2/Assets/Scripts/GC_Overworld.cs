@@ -39,51 +39,10 @@ public class GC_Overworld : MonoBehaviour
         //TODO: Hacking for testing; Remove!
         {
             if(Input.GetButtonDown("Fire1")){
-                TransitionToBattle(); 
+                //TransitionToBattle(); 
             }
             else if(Input.GetButtonDown("Fire2")){
                 GameObject obj = new GameObject(); //Intentionally instantiate empty gameobjects, to test Game Over state reset!
-            }
-        }
-    }
-
-    public void TransitionToBattle(){
-
-        //Ensure we're not trying to transition to a scene that doesn't exist!
-        if(string.IsNullOrEmpty(battleScene)){
-            Debug.LogWarning("Warning: Invalid Battle Scene Name!");
-            return;
-        }
-
-        //Using static data members to pass data through to the Battle scene!
-        //BattleInfo.enemies.Add(new GameObject());   //For now, we'll pretend that enemies are just a generic GameObject...
-        BattleInfo.difficultyScaling = 100; 
-
-        //sets up callback once scene is loaded -> call OnBattleSceneLoaded
-        SceneManager.sceneLoaded += OnBattleSceneLoaded;
-
-        //Load the Battle Scene
-        Debug.Log("Transitioning to Battle Scene!");
-        SceneManager.LoadScene(battleScene, LoadSceneMode.Single);
-
-    }
-
-    private void OnBattleSceneLoaded(Scene scene, LoadSceneMode mode){
-        Debug.Log("Battle Scene Loaded!");
-
-        if (scene.name == battleScene){
-
-            //Unregister the callback
-            SceneManager.sceneLoaded -= OnBattleSceneLoaded;            
-            //Get the Battle Controller
-            Transfer transferObj = GameObject.FindFirstObjectByType<Transfer>();
-            if (transferObj != null){
-                //Pass transferObj player reference to the Battle Controller
-                transferObj.setPlayerObj(GameObject.FindWithTag("Player"));
-                transferObj.setEnemyObj(BattleInfo.enemies[0].GetComponent<GameObject>());
-            }
-            else {
-                Debug.LogWarning("Warning: Could not find Battle Controller in Battle Scene!");
             }
         }
     }

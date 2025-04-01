@@ -56,39 +56,37 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
             Debug.Log("Enemy entered trigger!");
+            
             battleScene = "devBattle";
             specifiedMonster = other.gameObject;
             DontDestroyOnLoad(specifiedMonster);
             Debug.Log($"Collided with monster: {specifiedMonster.name}");
 
+            //sets up callback once scene is loaded -> call OnBattleSceneLoaded
             SceneManager.sceneLoaded += OnBattleSceneLoaded;
+            
             //Load the Battle Scene
             Debug.Log("Transitioning to Battle Scene!");
-            // // Got simple scene change working, The above is for more complex scene change
-            SceneManager.LoadScene("devBattle", LoadSceneMode.Single);
+            SceneManager.LoadScene(battleScene, LoadSceneMode.Single);
         }
     }
 
-    private void OnBattleSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
+    private void OnBattleSceneLoaded(Scene scene, LoadSceneMode mode) {
         Debug.Log("Battle Scene Loaded!");
 
         if (scene.name == battleScene)
         {
-
             //Unregister the callback
             SceneManager.sceneLoaded -= OnBattleSceneLoaded;
-            //Get the Battle Controller
+            
+            //Get Transfer Object to pass references to the Battle Controller
             Transfer transferObj = GameObject.FindFirstObjectByType<Transfer>();
-            if (transferObj != null)
-            {
-                //Pass transferObj player reference to the Battle Controller
+            if (transferObj != null) {
+                //getting player and enemy references
                 transferObj.setPlayerObj(GameObject.FindWithTag("Player"));
                 transferObj.setEnemyObj(specifiedMonster);
                 Debug.Log($"Transfer monster: {specifiedMonster.name}");
-            }
-            else
-            {
+            } else{
                 Debug.LogWarning("Warning: Could not find Battle Controller in Battle Scene!");
             }
         }

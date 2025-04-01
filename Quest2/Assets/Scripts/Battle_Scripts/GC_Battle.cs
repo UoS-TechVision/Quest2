@@ -48,14 +48,10 @@ public class GC_Battle : MonoBehaviour
         GameObject playerGO = Instantiate(playerObj, playerSpawnPos);
         playerUnit = playerObj.GetComponent<Unit>();
 
-
         //GameObject enemyGO = Instantiate(enemyObj, enemySpawnPos);
         //Delete message - When testing in devOverworld: when performing collision, if you are still holding onto object during transition -> enemy will not be placed on platform
-        Debug.Log("Enemy Pose Before: " + enemyObj.transform.position + " " + enemyObj.transform.rotation);
         enemyObj.transform.position = enemySpawnPos.position;
         enemyObj.transform.rotation = enemySpawnPos.rotation;
-        Debug.Log("Enemy Spawn: " + enemySpawnPos.position + " " + enemySpawnPos.rotation);
-        Debug.Log("Enemy Pose After: " + enemyObj.transform.position + " " + enemyObj.transform.rotation);
         enemyUnit = enemyObj.GetComponent<Unit>();
 
         playerHUD.SetHUD(playerUnit);
