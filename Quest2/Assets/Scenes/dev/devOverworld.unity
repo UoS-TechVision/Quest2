@@ -224,15 +224,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Player
   unitLevel: 100
-  maxHP: 200
-  currentHP: 100
-  maxMana: 300
-  currentMana: 30
-  unitDamage: 30
   strength: 25
   mana: 100
   skillPoints: 2
   health: 100
+  maxHealth: 300
+  maxMana: 300
+  maxStrength: 100
+  skillDamage: 50
+  skillCost: 75
+  skillName: 
 --- !u!143 &771318137
 CharacterController:
   m_ObjectHideFlags: 0
@@ -270,9 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010b5ab0d8116f33ba68b12e5b7f7569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 771318137}
-  speed: 5
-  stats: {fileID: 0}
 --- !u!54 &771318139
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -332,6 +330,7 @@ GameObject:
   - component: {fileID: 1166601201}
   - component: {fileID: 1166601200}
   - component: {fileID: 1166601199}
+  - component: {fileID: 1166601202}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -413,6 +412,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1166601202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166601198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &1220004142
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,7 +700,7 @@ Transform:
   m_GameObject: {fileID: 1836304508}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.78, y: -3.1, z: 1.4}
+  m_LocalPosition: {x: 13.55, y: -3.1, z: 1.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -677,15 +720,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Joe
   unitLevel: 1
-  maxHP: 1
-  currentHP: 1
-  maxMana: 20
-  currentMana: 10
-  unitDamage: 1
   strength: 25
   mana: 100
   skillPoints: 2
   health: 100
+  maxHealth: 300
+  maxMana: 20
+  maxStrength: 100
+  skillDamage: 50
+  skillCost: 75
+  skillName: 
 --- !u!114 &1836304511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,7 +759,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
