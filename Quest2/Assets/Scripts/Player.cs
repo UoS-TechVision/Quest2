@@ -61,19 +61,6 @@ public class Player : MonoBehaviour
             DontDestroyOnLoad(specifiedMonster);
             Debug.Log($"Collided with monster: {specifiedMonster.name}");
 
-            // Transfer transferObj = GameObject.FindFirstObjectByType<Transfer>();
-            // if (transferObj != null)
-            // {
-            //     //Pass transferObj player reference to the Battle Controller
-            //     transferObj.setPlayerObj(GameObject.FindWithTag("Player"));
-            //     transferObj.setEnemyObj(specifiedMonster);
-            //     Debug.Log($"Transfer monster: {specifiedMonster.name}");
-            // }
-            // else
-            // {
-            //     Debug.LogWarning("Warning: Could not find Battle Controller in Battle Scene!");
-            // }
-
             SceneManager.sceneLoaded += OnBattleSceneLoaded;
             //Load the Battle Scene
             Debug.Log("Transitioning to Battle Scene!");

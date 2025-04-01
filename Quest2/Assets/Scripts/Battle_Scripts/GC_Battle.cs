@@ -35,9 +35,9 @@ public class GC_Battle : MonoBehaviour
     {
         Debug.Log("Loaded with Scaling of " + BattleInfo.difficultyScaling);
         state = BattleState.Start;
-        //Transfer transfer = GameObject.FindAnyObjectByType<Transfer>(); 
-        playerObj = GameObject.FindGameObjectWithTag("Player");
-        enemyObj = GameObject.FindGameObjectWithTag("Enemy");
+        Transfer transfer = GameObject.FindAnyObjectByType<Transfer>(); 
+        playerObj = transfer.playerObj; //GameObject.FindGameObjectWithTag("Player");
+        enemyObj = transfer.enemyObj; //GameObject.FindGameObjectWithTag("Enemy");
         StartCoroutine(SetUpBattle());
 
     }
@@ -45,11 +45,17 @@ public class GC_Battle : MonoBehaviour
 
     IEnumerator SetUpBattle()
     {
-        //GameObject playerGO = Instantiate(playerObj, playerSpawnPos);
+        GameObject playerGO = Instantiate(playerObj, playerSpawnPos);
         playerUnit = playerObj.GetComponent<Unit>();
 
 
         //GameObject enemyGO = Instantiate(enemyObj, enemySpawnPos);
+        //Delete message - When testing in devOverworld: when performing collision, if you are still holding onto object during transition -> enemy will not be placed on platform
+        Debug.Log("Enemy Pose Before: " + enemyObj.transform.position + " " + enemyObj.transform.rotation);
+        enemyObj.transform.position = enemySpawnPos.position;
+        enemyObj.transform.rotation = enemySpawnPos.rotation;
+        Debug.Log("Enemy Spawn: " + enemySpawnPos.position + " " + enemySpawnPos.rotation);
+        Debug.Log("Enemy Pose After: " + enemyObj.transform.position + " " + enemyObj.transform.rotation);
         enemyUnit = enemyObj.GetComponent<Unit>();
 
         playerHUD.SetHUD(playerUnit);
