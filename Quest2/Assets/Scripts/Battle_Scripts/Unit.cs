@@ -3,8 +3,8 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     // Default values
-    [SerializeField] private string unitName = "default_name";
-    [SerializeField] private int unitLevel = 1;
+    [SerializeField] public string unitName = "default_name";
+    [SerializeField] public int unitLevel = 1;
     [SerializeField] private int strength = 25;
     [SerializeField] private int mana = 100;
     [SerializeField] private int skillPoints = 1;
@@ -14,11 +14,10 @@ public class Unit : MonoBehaviour
     [SerializeField] private int maxStrength = 100;
     [SerializeField] private int skillDamage = 50;
     [SerializeField] private int skillCost = 75;
+    [SerializeField] private string skillName = "";
     
     // Public properties with getters and setters
     // TODO: validation for set methods below
-    public string UnitName { get => unitName; }
-    public int UnitLevel { get => unitLevel; }
 
     public int Strength
     {
@@ -56,6 +55,12 @@ public class Unit : MonoBehaviour
     public int MaxHealth { get => maxHealth; }
     public int MaxMana { get => maxMana; }
     public int MaxStrength { get => maxStrength; }
+
+    public int SkillCost { get => skillCost; }
+
+    public int SkillDamage { get=> skillDamage; }
+
+    public string SkillName { get => skillName; }
     
     // Add points to a stat
     public bool AllocateStat(string statName)
@@ -96,6 +101,24 @@ public class Unit : MonoBehaviour
                "Mana: " + SkillPoints + " // " +
                "Health: " + Health + " // " +
                "Skill Points: " + SkillPoints;
+    }
+
+
+    public bool TakeDamage(int damage)
+    {
+        health -= damage;
+
+        return health <= 0;
+    }
+
+    public void DeductMana()
+    {
+        mana -= skillCost;
+    }
+
+    public void IncrementMana()
+    {
+        mana += 10;
     }
     
 }

@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb6dbd1e4e494e5b9d1db38756b54d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 919132149155446097, guid: 5ee932f9e6e0c461197cc45990a0dafe, type: 3}
+  monsterPrefab: {fileID: 3016310215795289774, guid: 6586546ad67a04103b728f2d3b419f06, type: 3}
   gridWidth: 8
   gridHeight: 5
   cellSize: 1.5
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4683546231246788857}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fd58c3696cd5457cb2c69377db79cd3, type: 3}
   m_Name: 
