@@ -24,7 +24,9 @@ public class Skill : MonoBehaviour
     
     private void Awake()
     {
-        InitializeSkill();
+
+/*        Debug.Log("AWAKE");
+        InitializeSkill();*/
     }
 
     private void InitializeSkill()

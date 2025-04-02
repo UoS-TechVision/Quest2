@@ -104,7 +104,7 @@ public class Unit : MonoBehaviour
 
     public bool TakeDamage(int damage)
     {
-        health -= damage;
+        Health -= damage;
         Debug.Log(damage);
 
         return health <= 0;
@@ -112,7 +112,7 @@ public class Unit : MonoBehaviour
 
     public void DeductMana()
     {
-        mana -= skill.skillCost;
+        Mana -= skill.skillCost;
     }
 
     public void IncrementMana()

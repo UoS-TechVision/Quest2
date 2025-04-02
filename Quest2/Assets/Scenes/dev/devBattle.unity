@@ -1131,6 +1131,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6441843876270716114, guid: 1943d5d71f525412693d42727393fb49, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 475465488898833835, guid: 31d8af3fbc00e364e89778b8c8e4b9f5, type: 3}
+    - target: {fileID: 6441843876270716114, guid: 1943d5d71f525412693d42727393fb49, type: 3}
       propertyPath: health
       value: 100
       objectReference: {fileID: 0}
@@ -1490,7 +1494,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 753520778}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 337397836}
+        m_TargetAssemblyTypeName: GC_Battle, Assembly-CSharp
+        m_MethodName: onSkillButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &753520778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2275,6 +2291,10 @@ PrefabInstance:
       propertyPath: maxHP
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 3330629817552376129, guid: f8abe5991f79f4f87a4340ce0f136a71, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 475465488898833835, guid: 31d8af3fbc00e364e89778b8c8e4b9f5, type: 3}
     - target: {fileID: 3330629817552376129, guid: f8abe5991f79f4f87a4340ce0f136a71, type: 3}
       propertyPath: health
       value: 100

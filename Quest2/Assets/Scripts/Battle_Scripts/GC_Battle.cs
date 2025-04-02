@@ -30,6 +30,9 @@ public class GC_Battle : MonoBehaviour
 
     [SerializeField] private string overworldScene;    //Name of the Overworld Scene to transition into
 
+    [SerializeField] private bool attackClicked = false;
+    [SerializeField] private bool skillClicked = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,7 +48,7 @@ public class GC_Battle : MonoBehaviour
 
     IEnumerator SetUpBattle()
     {
-        GameObject playerGO = Instantiate(playerObj, playerSpawnPos);
+        //GameObject playerGO = Instantiate(playerObj, playerSpawnPos);
         playerUnit = playerObj.GetComponent<Unit>();
 
         //GameObject enemyGO = Instantiate(enemyObj, enemySpawnPos);
@@ -83,7 +86,7 @@ public class GC_Battle : MonoBehaviour
         enemyHUD.SetHP(enemyUnit);
 
         dialogueText.text = "Player attacks...";
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         if (isDead)
         {
@@ -103,7 +106,14 @@ public class GC_Battle : MonoBehaviour
     IEnumerator PlayerSkill()
     {
         // Damage Enemy
-        dialogueText.text = "Player used " + playerUnit.skill.projectile + " projectile!!";
+
+        GameObject skillProjectile = Instantiate(playerUnit.skill.gameObject, playerUnit.transform.position, Quaternion.identity);
+
+        Debug.Log("Skill Name: " + playerUnit.skill.skillName);
+        Debug.Log("Skill Cost: " + playerUnit.skill.skillCost);
+        Debug.Log("Skill Damage: " + playerUnit.skill.skillDamage);
+
+        dialogueText.text = "Player used " + playerUnit.skill.skillName;
         int skillDamage;
         if (Random.value < playerUnit.skill.critChance)
         {
@@ -113,13 +123,16 @@ public class GC_Battle : MonoBehaviour
         {
             skillDamage = playerUnit.skill.skillDamage;
         }
-        
+
+
         bool isDead = enemyUnit.TakeDamage(skillDamage);
 
         playerUnit.DeductMana();
 
         enemyHUD.SetHP(enemyUnit);
-        yield return new WaitForSeconds(1f);
+        playerHUD.SetMana(playerUnit);
+
+        yield return new WaitForSeconds(2f);
 
         if (isDead)
         {
@@ -139,8 +152,12 @@ public class GC_Battle : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
+        dialogueText.text = enemyUnit.name + "'s turn.....";
+
+        yield return new WaitForSeconds(2f);
+
         int randUpper = 0;
-        if (enemyUnit.Mana >= enemyUnit.SkillCost)
+        if (enemyUnit.Mana >= enemyUnit.skill.skillCost)
         {
             randUpper = 1;
         }
@@ -152,7 +169,7 @@ public class GC_Battle : MonoBehaviour
         {
             dialogueText.text = enemyUnit.name + " attacks!";
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             dmg = enemyUnit.Strength;
         }
@@ -160,17 +177,28 @@ public class GC_Battle : MonoBehaviour
         // Skill Attack
         else
         {
-            dialogueText.text = enemyUnit.name + " uses... ";
-            yield return new WaitForSeconds(1f);
-            dmg = enemyUnit.SkillDamage;
+            dialogueText.text = enemyUnit.name + " uses " + enemyUnit.skill.skillName;
+            yield return new WaitForSeconds(2f);
+            if (Random.value < playerUnit.skill.critChance)
+            {
+                dmg = Mathf.RoundToInt(enemyUnit.skill.critDamage * enemyUnit.skill.skillDamage);
+            }
+            else
+            {
+                dmg = enemyUnit.skill.skillDamage;
+            }
             enemyUnit.DeductMana();
         }
 
         bool isDead = playerUnit.TakeDamage(dmg);
          
         playerHUD.SetHP(playerUnit);
+        enemyHUD.SetMana(enemyUnit);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
+
+        attackClicked = false;
+        skillClicked = false;
 
         if (isDead)
         {
@@ -199,10 +227,12 @@ public class GC_Battle : MonoBehaviour
 
     public void onAttackButton()
     {
-        if (state != BattleState.PlayerTurn)
+        if (state != BattleState.PlayerTurn && attackClicked)
         {
             return;
         }
+
+        attackClicked = true;
 
         StartCoroutine(PlayerAttack());
     }
@@ -210,10 +240,12 @@ public class GC_Battle : MonoBehaviour
 
     public void onSkillButton()
     {
-        if (state != BattleState.PlayerTurn && playerUnit.Mana < playerUnit.SkillCost)
+        if (state != BattleState.PlayerTurn && playerUnit.Mana < playerUnit.skill.skillCost && skillClicked)
         {
             return;
         }
+
+        skillClicked = true;
 
         StartCoroutine(PlayerSkill());
     }
