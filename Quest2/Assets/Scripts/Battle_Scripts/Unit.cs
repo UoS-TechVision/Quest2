@@ -12,9 +12,10 @@ public class Unit : MonoBehaviour
     [SerializeField] private int maxHealth = 300;
     [SerializeField] private int maxMana = 300;
     [SerializeField] private int maxStrength = 100;
-    [SerializeField] private int skillDamage = 50;
-    [SerializeField] private int skillCost = 75;
-    [SerializeField] private string skillName = "";
+    // [SerializeField] private int skillDamage = 50;
+    // [SerializeField] private int skillCost = 75;
+    // [SerializeField] private string skillName = "";
+    [SerializeField] private Skill skill;
     
     // Public properties with getters and setters
     // TODO: validation for set methods below
@@ -56,11 +57,11 @@ public class Unit : MonoBehaviour
     public int MaxMana { get => maxMana; }
     public int MaxStrength { get => maxStrength; }
 
-    public int SkillCost { get => skillCost; }
+    public int SkillCost { get => skill.skillCost; }
 
-    public int SkillDamage { get=> skillDamage; }
+    public int SkillDamage { get=> skill.skillDamage; }
 
-    public string SkillName { get => skillName; }
+    public string SkillName { get => skill.projectile.ToString(); }
     
     // Add points to a stat
     public bool AllocateStat(string statName)
@@ -113,7 +114,7 @@ public class Unit : MonoBehaviour
 
     public void DeductMana()
     {
-        mana -= skillCost;
+        mana -= skill.skillCost;
     }
 
     public void IncrementMana()

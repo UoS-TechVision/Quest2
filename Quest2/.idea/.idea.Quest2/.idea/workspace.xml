@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d43bec1-22c6-4b6c-b1df-377ac143d8fa" name="Changes" comment="" />
+    <list default="true" id="3d43bec1-22c6-4b6c-b1df-377ac143d8fa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Battle_Scripts/Skill.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Quest2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Quest2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Battle_Scripts/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle_Scripts/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skill.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skill.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle_Scripts/Skill.cs.meta" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +38,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "<unknown>",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -102,6 +109,7 @@
       <workItem from="1741795619201" duration="1494000" />
       <workItem from="1741797618564" duration="756000" />
       <workItem from="1743002114177" duration="6221000" />
+      <workItem from="1743598851449" duration="1824000" />
     </task>
     <servers />
   </component>
