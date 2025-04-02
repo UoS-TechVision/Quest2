@@ -12,10 +12,7 @@ public class Unit : MonoBehaviour
     [SerializeField] private int maxHealth = 300;
     [SerializeField] private int maxMana = 300;
     [SerializeField] private int maxStrength = 100;
-    // [SerializeField] private int skillDamage = 50;
-    // [SerializeField] private int skillCost = 75;
-    // [SerializeField] private string skillName = "";
-    [SerializeField] private Skill skill;
+    [SerializeField] public Skill skill;
     
     // Public properties with getters and setters
     // TODO: validation for set methods below
@@ -108,6 +105,7 @@ public class Unit : MonoBehaviour
     public bool TakeDamage(int damage)
     {
         health -= damage;
+        Debug.Log(damage);
 
         return health <= 0;
     }
