@@ -103,8 +103,18 @@ public class GC_Battle : MonoBehaviour
     IEnumerator PlayerSkill()
     {
         // Damage Enemy
-        dialogueText.text = "Player used " + playerUnit.SkillName + "!!";
-        bool isDead = enemyUnit.TakeDamage(playerUnit.SkillDamage);
+        dialogueText.text = "Player used " + playerUnit.skill.projectile + " projectile!!";
+        int skillDamage;
+        if (Random.value < playerUnit.skill.critChance)
+        {
+            skillDamage = Mathf.RoundToInt(playerUnit.skill.critDamage * playerUnit.skill.skillDamage);
+        }
+        else
+        {
+            skillDamage = playerUnit.skill.skillDamage;
+        }
+        
+        bool isDead = enemyUnit.TakeDamage(skillDamage);
 
         playerUnit.DeductMana();
 
