@@ -12,7 +12,7 @@ public class Unit : MonoBehaviour
     [SerializeField] private int maxHealth = 300;
     [SerializeField] private int maxMana = 300;
     [SerializeField] private int maxStrength = 100;
-    [SerializeField] private int skillDamage = 2*strength;
+    [SerializeField] private int skillDamage = 50;
     [SerializeField] private int skillCost = 75;
     
     // Public properties with getters and setters
