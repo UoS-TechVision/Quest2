@@ -950,8 +950,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  playerObj: {fileID: 0}
-  enemyObj: {fileID: 0}
+  playerObj: {fileID: 1175583071}
+  enemyObj: {fileID: 923565266}
   playerSpawnPos: {fileID: 472144902}
   enemySpawnPos: {fileID: 1670556616}
   playerHUD: {fileID: 942545372}
@@ -1834,6 +1834,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921808469}
   m_CullTransparentMesh: 1
+--- !u!1 &923565266 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6619463568121480535, guid: f8abe5991f79f4f87a4340ce0f136a71, type: 3}
+  m_PrefabInstance: {fileID: 1232225389}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &929961329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2214,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1175583071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8790541548313125228, guid: 1943d5d71f525412693d42727393fb49, type: 3}
+  m_PrefabInstance: {fileID: 461976256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1232225389
 PrefabInstance:
   m_ObjectHideFlags: 0

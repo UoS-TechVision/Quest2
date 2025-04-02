@@ -36,8 +36,8 @@ public class GC_Battle : MonoBehaviour
         Debug.Log("Loaded with Scaling of " + BattleInfo.difficultyScaling);
         state = BattleState.Start;
         Transfer transfer = GameObject.FindAnyObjectByType<Transfer>(); 
-        playerObj = transfer.playerObj; //GameObject.FindGameObjectWithTag("Player");
-        enemyObj = transfer.enemyObj; //GameObject.FindGameObjectWithTag("Enemy");
+        //playerObj = transfer.playerObj; GameObject.FindGameObjectWithTag("Player");å
+        //enemyObj = transfer.enemyObj; GameObject.FindGameObjectWithTag("Enemy");
         StartCoroutine(SetUpBattle());
 
     }
@@ -129,11 +129,35 @@ public class GC_Battle : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
-        dialogueText.text = enemyUnit.name + " attacks!";
+        int randUpper = 0;
+        if (enemyUnit.Mana >= enemyUnit.SkillCost)
+        {
+            randUpper = 1;
+        }
 
-        yield return new WaitForSeconds(1f);
+        int move = Random.Range(0, randUpper);
+        int dmg = 0;
+        // Basic Attack
+        if (move == 0)
+        {
+            dialogueText.text = enemyUnit.name + " attacks!";
 
-        bool isDead = playerUnit.TakeDamage(enemyUnit.Strength);
+            yield return new WaitForSeconds(1f);
+
+            dmg = enemyUnit.Strength;
+        }
+
+        // Skill Attack
+        else
+        {
+            dialogueText.text = enemyUnit.name + " uses... ";
+            yield return new WaitForSeconds(1f);
+            dmg = enemyUnit.SkillDamage;
+            enemyUnit.DeductMana();
+        }
+
+        bool isDead = playerUnit.TakeDamage(dmg);
+         
         playerHUD.SetHP(playerUnit);
 
         yield return new WaitForSeconds(1f);
