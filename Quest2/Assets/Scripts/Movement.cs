@@ -7,12 +7,14 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     private float gridSize = 1.6f; // The distance between grid points
+    private float moveSpeed = 1.8f; // Adjust this value to change the speed
 
     private Vector3 targetPosition; // The next position to move to
     private bool isMoving = false; // Prevent overlapping movements
 
     private Transform cameraTransform;
     private Vector3 cameraOffset;
+
 
     private void Awake()
     {
@@ -58,7 +60,7 @@ public class Movement : MonoBehaviour
         if (!isMoving) return;
 
         // Smoothly move the character toward the target position
-        Vector3 newPosition = Vector3.MoveTowards(rb.position, targetPosition, gridSize / 0.1f * Time.fixedDeltaTime);
+        Vector3 newPosition = Vector3.MoveTowards(rb.position, targetPosition, moveSpeed * Time.fixedDeltaTime);
         rb.MovePosition(newPosition);
 
         // Check if the character has reached the target position
