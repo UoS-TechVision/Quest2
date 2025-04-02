@@ -31,7 +31,7 @@ public class Generate : MonoBehaviour
                     float totalWidth = (gridWidth - 1) * cellSize; // Total grid width
                     float totalHeight = (gridHeight - 1) * cellSize; // Total grid height
 
-                    Vector3 bottomLeft = roomPosition - new Vector3(totalWidth / 2, 0, totalHeight / 2);
+                    Vector3 bottomLeft = roomPosition - new Vector3(totalWidth / 2, 0, totalHeight / 2 - 3);
                     Instantiate(Player, bottomLeft, Quaternion.identity);
                 }
 
