@@ -39,8 +39,8 @@ public class GC_Battle : MonoBehaviour
         Debug.Log("Loaded with Scaling of " + BattleInfo.difficultyScaling);
         state = BattleState.Start;
         Transfer transfer = GameObject.FindAnyObjectByType<Transfer>(); 
-        //playerObj = transfer.playerObj; GameObject.FindGameObjectWithTag("Player");å
-        //enemyObj = transfer.enemyObj; GameObject.FindGameObjectWithTag("Enemy");
+        //playerObj = transfer.playerObj; GameObject.FindGameObjectWithTag("Player");ï¿½
+        enemyObj = transfer.enemyObj; //GameObject.FindGameObjectWithTag("Enemy");
         StartCoroutine(SetUpBattle());
 
     }
@@ -81,7 +81,10 @@ public class GC_Battle : MonoBehaviour
     {
         // Damage Enemy
 
-        bool isDead = enemyUnit.TakeDamage(playerUnit.Strength);
+        // bool isDead = enemyUnit.TakeDamage(playerUnit.Strength);
+        
+        // testing player win - transition back to overworld
+        bool isDead = enemyUnit.TakeDamage(100);
 
         enemyHUD.SetHP(enemyUnit);
 
@@ -91,6 +94,7 @@ public class GC_Battle : MonoBehaviour
         if (isDead)
         {
             state = BattleState.WON;
+            Debug.Log("Player Won");
             EndBattle();
         }
         else
@@ -218,6 +222,14 @@ public class GC_Battle : MonoBehaviour
         if (state == BattleState.WON)
         {
             dialogueText.text = "You have defeated " + enemyUnit.name + "!!";
+            Debug.Log("EndBattle - Player Won");
+
+            Transfer transfer = GameObject.FindAnyObjectByType<Transfer>();
+            transfer.defeatedEnemies.Add(enemyObj.name);
+            Debug.Log("Defeated Enemies: " + transfer.defeatedEnemies.Count);
+            Debug.Log("Defeated Enemies: " + transfer.defeatedEnemies.ToString());
+    
+            TransitionToOverworld();
         }
         else if (state == BattleState.LOST)
         {
@@ -252,6 +264,7 @@ public class GC_Battle : MonoBehaviour
 
     void TransitionToOverworld()
     {
+        overworldScene = "devOverworld";
         //Ensure we're not trying to transition to a scene that doesn't exist
         if (string.IsNullOrEmpty(overworldScene))
         {
@@ -260,6 +273,7 @@ public class GC_Battle : MonoBehaviour
         }
 
         //Transition to the Overworld scene
+        Debug.Log("Transitioning to Overworld Scene!");
         SceneManager.LoadScene(overworldScene, LoadSceneMode.Single);
     }
-}
+}   

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class BattleInfo {
-    public static List<GameObject> enemies; //What enemies are we fighting in this battle?
+    public static List<GameObject> enemies = new List<GameObject>(); //What enemies are we fighting in this battle?
     public static uint difficultyScaling; //How difficult is this battle?
 };
 
@@ -27,11 +27,49 @@ public class GC_Overworld : MonoBehaviour
         //Cache a reference to the player
         playerRef = GameObject.FindWithTag("Player").GetComponent<Player>(); 
         bIsGameOver = false; 
+
+        //Monster Spawner call here? 
+        // currently find all enemies in the scene but enemies not spawned yet
+        GameObject[] allObjects = GameObject.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                BattleInfo.enemies.Add(obj);
+            }
+        }
+
+        //Restoring player and monster positions
+        Transfer transfer = GameObject.FindAnyObjectByType<Transfer>();
+        if(transfer != null){
+            //playerRef.transform.position = transfer.playerPosition; 
+            //removing defeated enemies
+            foreach(GameObject enemy in BattleInfo.enemies){
+                if(transfer.defeatedEnemies.Contains(enemy.name)){
+                    Destroy(enemy); 
+                    Debug.Log("Enemy destroyed");
+                }
+            }
+            foreach(GameObject enemy in BattleInfo.enemies){
+                enemy.transform.position = transfer.enemyPositions[enemy.name]; 
+            }
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Store monster positions
+        Transfer transfer = GameObject.FindAnyObjectByType<Transfer>();
+        if(transfer != null){
+            transfer.playerPosition = playerRef.transform.position; 
+            foreach(GameObject enemy in BattleInfo.enemies){
+                transfer.enemyPositions[enemy.name] = enemy.transform.position; 
+            }
+        }
+
+        //check for loss condition
         if(!CheckLoseCondition() && !bIsGameOver){
             //If the player has "lost", Trigger a Game Over
             GameOver(); 
