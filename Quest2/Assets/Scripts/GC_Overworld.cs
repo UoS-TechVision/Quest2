@@ -29,30 +29,34 @@ public class GC_Overworld : MonoBehaviour
         bIsGameOver = false; 
 
         //Monster Spawner call here? 
-        // currently find all enemies in the scene but enemies not spawned yet
+        // currently find all enemies in the scene but multiple enemies not spawned yet
         GameObject[] allObjects = GameObject.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
         foreach (GameObject obj in allObjects)
         {
             if (obj.layer == LayerMask.NameToLayer("Enemy"))
             {
                 BattleInfo.enemies.Add(obj);
+                //Debug.Log("Found enemy: " + obj.name);
             }
         }
 
-        //Restoring player and monster positions
-        Transfer transfer = GameObject.FindAnyObjectByType<Transfer>();
-        if(transfer != null){
-            //playerRef.transform.position = transfer.playerPosition; 
-            //removing defeated enemies
-            foreach(GameObject enemy in BattleInfo.enemies){
-                if(transfer.defeatedEnemies.Contains(enemy.name)){
-                    Destroy(enemy); 
-                    Debug.Log("Enemy destroyed");
-                }
-            }
-            foreach(GameObject enemy in BattleInfo.enemies){
-                enemy.transform.position = transfer.enemyPositions[enemy.name]; 
-            }
+        // initally setting then on transition back -> restoring player and monster positions
+        OverworldManager overworldManager = GameObject.FindFirstObjectByType<OverworldManager>();
+        if (overworldManager != null)
+        {
+            overworldManager.enemies = BattleInfo.enemies.ToArray();
+            // Debug.Log("Found enemies: " + overworldManager.enemies.Length);
+            // foreach (GameObject enemy in overworldManager.enemies)
+            // {
+            //     Debug.Log("Found enemy: " + enemy.name);
+            // }
+            overworldManager.player = playerRef.gameObject;
+            DontDestroyOnLoad(playerRef.gameObject);
+            overworldManager.LoadOverworldState();
+        }
+        else
+        {
+            Debug.LogWarning("OverworldManager not found!");
         }
 
     }
@@ -60,14 +64,6 @@ public class GC_Overworld : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Store monster positions
-        Transfer transfer = GameObject.FindAnyObjectByType<Transfer>();
-        if(transfer != null){
-            transfer.playerPosition = playerRef.transform.position; 
-            foreach(GameObject enemy in BattleInfo.enemies){
-                transfer.enemyPositions[enemy.name] = enemy.transform.position; 
-            }
-        }
 
         //check for loss condition
         if(!CheckLoseCondition() && !bIsGameOver){

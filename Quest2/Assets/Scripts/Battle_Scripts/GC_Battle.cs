@@ -222,13 +222,11 @@ public class GC_Battle : MonoBehaviour
         if (state == BattleState.WON)
         {
             dialogueText.text = "You have defeated " + enemyUnit.name + "!!";
-            Debug.Log("EndBattle - Player Won");
 
-            Transfer transfer = GameObject.FindAnyObjectByType<Transfer>();
-            transfer.defeatedEnemies.Add(enemyObj.name);
-            Debug.Log("Defeated Enemies: " + transfer.defeatedEnemies.Count);
-            Debug.Log("Defeated Enemies: " + transfer.defeatedEnemies.ToString());
-    
+            //Enemy defeated - will be removed in OverworldManager.loadOverworldState()
+            OverworldManager overworldManager = GameObject.FindFirstObjectByType<OverworldManager>();
+            overworldManager.MarkEnemyAsDefeated(enemyObj.name);
+
             TransitionToOverworld();
         }
         else if (state == BattleState.LOST)
@@ -271,6 +269,9 @@ public class GC_Battle : MonoBehaviour
             Debug.LogWarning("Warning: Invalid Overworld Scene Name!");
             return;
         }
+
+        //Destroying the enemy object to prevent it from persisting in the Overworld scene
+        Destroy(enemyObj);
 
         //Transition to the Overworld scene
         Debug.Log("Transitioning to Overworld Scene!");

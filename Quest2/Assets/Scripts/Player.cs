@@ -62,6 +62,15 @@ public class Player : MonoBehaviour
             DontDestroyOnLoad(specifiedMonster);
             Debug.Log($"Collided with monster: {specifiedMonster.name}");
 
+            //Saving overworld state to return to
+            OverworldManager overworldManager = GameObject.FindFirstObjectByType<OverworldManager>();
+            if (overworldManager != null) {
+                overworldManager.SaveOverworldState();
+                Debug.Log("Overworld state saved!");
+            } else{
+                Debug.LogWarning("Warning: Could not find Overworld Manager in Overworld Scene!");
+            }
+
             //sets up callback once scene is loaded -> call OnBattleSceneLoaded
             SceneManager.sceneLoaded += OnBattleSceneLoaded;
             
