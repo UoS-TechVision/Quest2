@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ac32b6e4aeead48afc6931bda1c85a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 771318131}
   enemies: []
 --- !u!4 &988862709
 Transform:
@@ -652,7 +652,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 0}
   enemyObj: {fileID: 0}
-  playerPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1634194492
 Transform:
   m_ObjectHideFlags: 0
