@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1118214045323469850
+--- !u!1001 &2174098199238541499
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,90 +8,90 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+    - target: {fileID: 919132149155446097, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       propertyPath: m_Name
-      value: hell_room
+      value: forest_room.vox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5218332593310352025}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
+      addedObject: {fileID: 4138984779536252808}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7912701013864357320}
-  m_SourcePrefab: {fileID: 100100000, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
---- !u!1 &235832522705377611 stripped
+      addedObject: {fileID: 5248572797337931253}
+  m_SourcePrefab: {fileID: 100100000, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
+--- !u!1 &1363072377438813674 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bfa26c05a2fd068739e867ca25930b42, type: 3}
-  m_PrefabInstance: {fileID: 1118214045323469850}
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d598d83e11ad0436cad5a7e5f4bf1df3, type: 3}
+  m_PrefabInstance: {fileID: 2174098199238541499}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5218332593310352025
+--- !u!114 &4138984779536252808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235832522705377611}
+  m_GameObject: {fileID: 1363072377438813674}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cb6dbd1e4e494e5b9d1db38756b54d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 4791744259110235985, guid: 8dfc9c7e38b46492a898f0f04ad87bc3, type: 3}
+  monsterPrefab: {fileID: 7533428607636907753, guid: 36e046c9e7a034d11be8db4e6181eb51, type: 3}
   gridWidth: 8
   gridHeight: 5
   cellSize: 1.5
   sceneChangePrefab: {fileID: 0}
---- !u!114 &7912701013864357320
+--- !u!114 &5248572797337931253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235832522705377611}
+  m_GameObject: {fileID: 1363072377438813674}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fd58c3696cd5457cb2c69377db79cd3, type: 3}
@@ -100,5 +100,5 @@ MonoBehaviour:
   gridWidth: 8
   gridHeight: 5
   cellSize: 1.5
-  bossPrefab: {fileID: 5395021321085970222, guid: b747be31ed9be4203b4cf4f0312e3d17, type: 3}
+  bossPrefab: {fileID: 7040774302330490194, guid: 3db695b27df5c4ce6bbad25cdfba131b, type: 3}
   spawnPoint: {fileID: 0}
