@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 916413985158191549}
   - component: {fileID: 776157391114216239}
-  - component: {fileID: 2278042074125569222}
-  m_Layer: 0
+  - component: {fileID: 4908004977744877909}
+  m_Layer: 6
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 344513932687370469}
@@ -61,7 +61,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &2278042074125569222
+--- !u!65 &4908004977744877909
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 344513932687370469}
   - component: {fileID: 3175278276556018095}
   - component: {fileID: 2104694941816059195}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
