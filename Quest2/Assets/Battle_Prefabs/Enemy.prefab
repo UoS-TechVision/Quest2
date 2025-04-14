@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1330346086550611925}
   - component: {fileID: 3330629817552376129}
+  - component: {fileID: 799718707447796280}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -47,11 +48,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: 
   unitLevel: 0
-  maxHP: 0
-  currentHP: 0
+  strength: 25
+  mana: 100
+  skillPoints: 1
+  health: 100
+  maxHealth: 300
   maxMana: 0
-  currentMana: 0
-  unitDamage: 0
+  maxStrength: 100
+  skill: {fileID: 0}
+--- !u!65 &799718707447796280
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6619463568121480535}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.969881, y: 1.7452264, z: 1.2210803}
+  m_Center: {x: -0.07418001, y: -0.02437079, z: 0.116980255}
 --- !u!1001 &6575129061102989701
 PrefabInstance:
   m_ObjectHideFlags: 0

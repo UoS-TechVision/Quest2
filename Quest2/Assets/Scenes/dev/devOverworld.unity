@@ -227,7 +227,7 @@ MonoBehaviour:
   strength: 25
   mana: 100
   skillPoints: 2
-  health: 100
+  health: 300
   maxHealth: 300
   maxMana: 300
   maxStrength: 100
@@ -769,7 +769,7 @@ MonoBehaviour:
   skillPoints: 2
   health: 100
   maxHealth: 300
-  maxMana: 20
+  maxMana: 200
   maxStrength: 100
   skill: {fileID: 0}
 --- !u!114 &1836304511

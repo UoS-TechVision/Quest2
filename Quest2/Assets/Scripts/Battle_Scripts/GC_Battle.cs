@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using TMPro;
 
-public enum BattleState {Start, PlayerTurn, EnemyTurn, WON, LOST}
+public enum BattleState {Start, PlayerTurn, PlayerAction, EnemyTurn, EnemyAction, WON, LOST}
 
 public class GC_Battle : MonoBehaviour
 {
@@ -20,6 +20,9 @@ public class GC_Battle : MonoBehaviour
     public Transform playerSpawnPos;
     public Transform enemySpawnPos;
 
+    public Transform playerSkillSpawnPos;
+    public Transform enemySkillSpawnPos;
+
     Unit playerUnit;
     public GC_BattleHUD playerHUD;
     public GC_BattleHUD enemyHUD;
@@ -30,17 +33,35 @@ public class GC_Battle : MonoBehaviour
 
     [SerializeField] private string overworldScene;    //Name of the Overworld Scene to transition into
 
-    [SerializeField] private bool attackClicked = false;
-    [SerializeField] private bool skillClicked = false;
+    [SerializeField] private bool actionClicked = false;
+
+    [SerializeField] private float projectileSpeed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Debug.Log("Loaded with Scaling of " + BattleInfo.difficultyScaling);
         state = BattleState.Start;
-        Transfer transfer = GameObject.FindAnyObjectByType<Transfer>(); 
-        //playerObj = transfer.playerObj; GameObject.FindGameObjectWithTag("Player");�
-        enemyObj = transfer.enemyObj; //GameObject.FindGameObjectWithTag("Enemy");
+        Transfer transfer = GameObject.FindAnyObjectByType<Transfer>();
+
+        playerObj = GameObject.FindGameObjectWithTag("Player");
+        enemyObj = GameObject.FindGameObjectWithTag("Enemy");
+
+/*        GameObject playerGO = Instantiate(playerObj, playerSpawnPos);
+        playerGO.transform.parent = playerSpawnPos;
+        playerGO.transform.position = new Vector3(0, 0, 0);
+        playerGO.transform.rotation = Quaternion.identity;*/
+        playerUnit = playerObj.GetComponent<Unit>();
+
+/*        GameObject enemyGO = Instantiate(enemyObj, enemySpawnPos);
+        enemyGO.transform.parent = enemySpawnPos;
+        enemyGO.transform.position = new Vector3(0, 0, 0);
+        enemyGO.transform.rotation = Quaternion.identity;*/
+        enemyUnit = enemyObj.GetComponent<Unit>();
+        
+        playerHUD.SetHUD(playerUnit);
+        enemyHUD.SetHUD(enemyUnit);
+
         StartCoroutine(SetUpBattle());
 
     }
@@ -48,22 +69,14 @@ public class GC_Battle : MonoBehaviour
 
     IEnumerator SetUpBattle()
     {
-        //GameObject playerGO = Instantiate(playerObj, playerSpawnPos);
-        playerUnit = playerObj.GetComponent<Unit>();
 
-        //GameObject enemyGO = Instantiate(enemyObj, enemySpawnPos);
         //Delete message - When testing in devOverworld: when performing collision, if you are still holding onto object during transition -> enemy will not be placed on platform
-        enemyObj.transform.position = enemySpawnPos.position;
-        enemyObj.transform.rotation = enemySpawnPos.rotation;
-        enemyUnit = enemyObj.GetComponent<Unit>();
-
-        playerHUD.SetHUD(playerUnit);
-        enemyHUD.SetHUD(enemyUnit);
+        dialogueText.text = "You have encountered a " + enemyObj.name + " . FIGHT!!";
 
         yield return new WaitForSeconds(2f);
         state = BattleState.PlayerTurn;
-
-        dialogueText.text = "You have encountered a " + enemyObj.name + " . FIGHT!!";
+        dialogueText.text = "Player turn....";
+        
         yield return new WaitForSeconds(2f);
         PlayerTurn();
     }
@@ -73,22 +86,22 @@ public class GC_Battle : MonoBehaviour
         // Set player dialogue text
 
         dialogueText.text = "Choose an action: ";
-
-
+        actionClicked = false;
     }
 
     IEnumerator PlayerAttack()
     {
         // Damage Enemy
+        state = BattleState.PlayerAction;
+        dialogueText.text = "Player attacks...";
 
-        // bool isDead = enemyUnit.TakeDamage(playerUnit.Strength);
+        bool isDead = enemyUnit.TakeDamage(playerUnit.Strength);
         
         // testing player win - transition back to overworld
-        bool isDead = enemyUnit.TakeDamage(100);
+        //bool isDead = enemyUnit.TakeDamage(100);
 
         enemyHUD.SetHP(enemyUnit);
 
-        dialogueText.text = "Player attacks...";
         yield return new WaitForSeconds(2f);
 
         if (isDead)
@@ -110,14 +123,12 @@ public class GC_Battle : MonoBehaviour
     IEnumerator PlayerSkill()
     {
         // Damage Enemy
-
-        GameObject skillProjectile = Instantiate(playerUnit.skill.gameObject, playerUnit.transform.position, Quaternion.identity);
-
-        Debug.Log("Skill Name: " + playerUnit.skill.skillName);
-        Debug.Log("Skill Cost: " + playerUnit.skill.skillCost);
-        Debug.Log("Skill Damage: " + playerUnit.skill.skillDamage);
+        state = BattleState.PlayerAction;
+        GameObject skillProjectile = Instantiate(playerUnit.skill.gameObject, playerSkillSpawnPos.transform.position,  Quaternion.identity);
+        skillProjectile.GetComponent<Rigidbody>().AddRelativeForce(ComputeVector(true)); //true = Player
 
         dialogueText.text = "Player used " + playerUnit.skill.skillName;
+        yield return new WaitUntil(() => skillProjectile == false);
         int skillDamage;
         if (Random.value < playerUnit.skill.critChance)
         {
@@ -127,8 +138,7 @@ public class GC_Battle : MonoBehaviour
         {
             skillDamage = playerUnit.skill.skillDamage;
         }
-
-
+   
         bool isDead = enemyUnit.TakeDamage(skillDamage);
 
         playerUnit.DeductMana();
@@ -148,9 +158,20 @@ public class GC_Battle : MonoBehaviour
             state = BattleState.EnemyTurn;
             StartCoroutine(EnemyTurn());
         }
+    }
 
+    private Vector3 ComputeVector(bool PlayerOrEnemy) // True is Player, False is enemy
+    {
+        Vector3 dir = enemySkillSpawnPos.position - playerSkillSpawnPos.position; //Player to enemy
+        dir.Normalize();
+        if (!PlayerOrEnemy)
+        {
+            dir *= -1; // Inverse vector for enemy to player
+        }
+        
+        dir *= projectileSpeed;
 
-        yield return new WaitForSeconds(2f);
+        return dir;
     }
 
 
@@ -163,7 +184,7 @@ public class GC_Battle : MonoBehaviour
         int randUpper = 0;
         if (enemyUnit.Mana >= enemyUnit.skill.skillCost)
         {
-            randUpper = 1;
+            randUpper = 2;
         }
 
         int move = Random.Range(0, randUpper);
@@ -181,8 +202,11 @@ public class GC_Battle : MonoBehaviour
         // Skill Attack
         else
         {
+            GameObject skillProjectile = Instantiate(enemyUnit.skill.gameObject, enemySkillSpawnPos.transform.position, Quaternion.identity);
+            skillProjectile.GetComponent<Rigidbody>().AddRelativeForce(ComputeVector(false)); //true = Enemy
+
             dialogueText.text = enemyUnit.name + " uses " + enemyUnit.skill.skillName;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitUntil(() => skillProjectile == false);
             if (Random.value < playerUnit.skill.critChance)
             {
                 dmg = Mathf.RoundToInt(enemyUnit.skill.critDamage * enemyUnit.skill.skillDamage);
@@ -201,8 +225,7 @@ public class GC_Battle : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        attackClicked = false;
-        skillClicked = false;
+
 
         if (isDead)
         {
@@ -237,27 +260,34 @@ public class GC_Battle : MonoBehaviour
 
     public void onAttackButton()
     {
-        if (state != BattleState.PlayerTurn && attackClicked)
+        if (state == BattleState.PlayerTurn & !actionClicked)
+        {
+            actionClicked = true;
+
+            StartCoroutine(PlayerAttack());
+        }
+        else
         {
             return;
         }
 
-        attackClicked = true;
-
-        StartCoroutine(PlayerAttack());
     }
 
 
     public void onSkillButton()
     {
-        if (state != BattleState.PlayerTurn && playerUnit.Mana < playerUnit.skill.skillCost && skillClicked)
+        if (state == BattleState.PlayerTurn & playerUnit.Mana > playerUnit.skill.skillCost & !actionClicked)
+        {
+            actionClicked = true;
+
+            StartCoroutine(PlayerSkill());
+        }
+        else
         {
             return;
         }
 
-        skillClicked = true;
 
-        StartCoroutine(PlayerSkill());
     }
 
     void TransitionToOverworld()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7648343173103748869}
   - component: {fileID: 6441843876270716114}
   - component: {fileID: 4586830081868650612}
+  - component: {fileID: 2867026475535917162}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -55,9 +56,7 @@ MonoBehaviour:
   maxHealth: 300
   maxMana: 0
   maxStrength: 100
-  skillDamage: 50
-  skillCost: 75
-  skillName: 
+  skill: {fileID: 0}
 --- !u!114 &4586830081868650612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,8 +69,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010b5ab0d8116f33ba68b12e5b7f7569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 0}
-  speed: 5
+--- !u!65 &2867026475535917162
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8790541548313125228}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5027373, y: 2.3080637, z: 1.162495}
+  m_Center: {x: 0.00730434, y: -0.49555242, z: -0.081247844}
 --- !u!1001 &7568897992942183955
 PrefabInstance:
   m_ObjectHideFlags: 0
