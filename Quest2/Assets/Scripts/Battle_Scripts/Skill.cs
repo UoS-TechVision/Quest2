@@ -10,9 +10,9 @@ public class Skill : MonoBehaviour
     public enum ProjectileType
     {
         Fire,
-        Earth,
-        Water,
-        Wind
+        Poison,
+        Rock,
+        Earth
     }
 
     [SerializeField] public ProjectileType projectile;

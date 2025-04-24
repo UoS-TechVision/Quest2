@@ -1137,7 +1137,7 @@ PrefabInstance:
     - target: {fileID: 6441843876270716114, guid: 1943d5d71f525412693d42727393fb49, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 475465488898833835, guid: 31d8af3fbc00e364e89778b8c8e4b9f5, type: 3}
+      objectReference: {fileID: 5921973047236327947, guid: e326ea83c81157b4fb8d48dab9daf7a0, type: 3}
     - target: {fileID: 6441843876270716114, guid: 1943d5d71f525412693d42727393fb49, type: 3}
       propertyPath: health
       value: 100
@@ -2330,7 +2330,7 @@ PrefabInstance:
     - target: {fileID: 3330629817552376129, guid: f8abe5991f79f4f87a4340ce0f136a71, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 475465488898833835, guid: 31d8af3fbc00e364e89778b8c8e4b9f5, type: 3}
+      objectReference: {fileID: 7352376017438583654, guid: 5b29f6247e0376e44b4584a36ab6747c, type: 3}
     - target: {fileID: 3330629817552376129, guid: f8abe5991f79f4f87a4340ce0f136a71, type: 3}
       propertyPath: health
       value: 100

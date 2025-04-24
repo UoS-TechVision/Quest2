@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5976316827882849429
+--- !u!1001 &5179820172198656619
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,51 +8,51 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.55
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - target: {fileID: -8679921383154817045, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - target: {fileID: 919132149155446097, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       propertyPath: m_Name
-      value: Fireball
+      value: Poison
       objectReference: {fileID: 0}
-    - target: {fileID: 2699092741681021261, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - target: {fileID: 2699092741681021261, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
@@ -60,25 +60,25 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8130246357818635752}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
+      addedObject: {fileID: 8603800952591049600}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7706192722005487702}
-  m_SourcePrefab: {fileID: 100100000, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
---- !u!1 &6787291515948939716 stripped
+      addedObject: {fileID: 7352376017438583654}
+  m_SourcePrefab: {fileID: 100100000, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
+--- !u!1 &5414174275047294778 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fcd4cf5a43126a0429554029c0928719, type: 3}
-  m_PrefabInstance: {fileID: 5976316827882849429}
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d21debb34afb55748a48cf2d945498a3, type: 3}
+  m_PrefabInstance: {fileID: 5179820172198656619}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &8130246357818635752
+--- !u!54 &8603800952591049600
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6787291515948939716}
+  m_GameObject: {fileID: 5414174275047294778}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -99,21 +99,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7706192722005487702
+--- !u!114 &7352376017438583654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6787291515948939716}
+  m_GameObject: {fileID: 5414174275047294778}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 708a95c29c70336c5a961bda86271f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: 0
-  skillName: Fireball
-  skillDamage: 20
-  skillCost: 20
+  projectile: 1
+  skillName: Poison Throw
+  skillDamage: 15
+  skillCost: 10
   critChance: 0.5
   critDamage: 2
