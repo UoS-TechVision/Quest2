@@ -165,12 +165,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Skeleton
-  unitLevel: 10
+  unitLevel: 1
   strength: 10
   mana: 100
   skillPoints: 1
   health: 100
-  maxHealth: 300
+  maxHealth: 100
   maxMana: 100
   maxStrength: 100
   skill: {fileID: 8461011613547531394, guid: 08857f66f805c02489a33ddca1fd583d, type: 3}

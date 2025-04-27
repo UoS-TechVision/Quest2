@@ -113,13 +113,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0610e7727d74e00b124d7c44ce80d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: default_name
+  unitName: Demon
   unitLevel: 1
   strength: 25
   mana: 100
   skillPoints: 1
   health: 100
-  maxHealth: 300
-  maxMana: 300
+  maxHealth: 100
+  maxMana: 100
   maxStrength: 100
   skill: {fileID: 7706192722005487702, guid: a2b05c328296a5540ad7a5a882748cf6, type: 3}

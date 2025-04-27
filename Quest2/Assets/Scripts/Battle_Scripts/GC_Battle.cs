@@ -126,7 +126,6 @@ public class GC_Battle : MonoBehaviour
             StartCoroutine(EnemyTurn());
         }
 
-
         yield return new WaitForSeconds(2f);
     }
 
@@ -236,8 +235,6 @@ public class GC_Battle : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-
-
         if (isDead)
         {
             state = BattleState.LOST;
@@ -263,6 +260,8 @@ public class GC_Battle : MonoBehaviour
             OverworldManager overworldManager = GameObject.FindFirstObjectByType<OverworldManager>();
             overworldManager.MarkEnemyAsDefeated(enemyObj.name);
 
+            Destroy(enemyObj);
+
             TransitionToOverworld();
         }
         else if (state == BattleState.LOST)
@@ -283,7 +282,6 @@ public class GC_Battle : MonoBehaviour
         {
             return;
         }
-
     }
 
 
@@ -299,8 +297,6 @@ public class GC_Battle : MonoBehaviour
         {
             return;
         }
-
-
     }
 
     void TransitionToOverworld()

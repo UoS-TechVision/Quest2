@@ -125,13 +125,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0610e7727d74e00b124d7c44ce80d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: default_name
+  unitName: Beast Tamer
   unitLevel: 1
   strength: 25
   mana: 100
   skillPoints: 1
   health: 100
-  maxHealth: 300
-  maxMana: 300
+  maxHealth: 100
+  maxMana: 100
   maxStrength: 100
   skill: {fileID: 5921973047236327947, guid: e326ea83c81157b4fb8d48dab9daf7a0, type: 3}

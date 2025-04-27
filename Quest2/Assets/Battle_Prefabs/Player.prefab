@@ -166,12 +166,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: 
-  unitLevel: 10
-  strength: 25
+  unitLevel: 1
+  strength: 50
   mana: 100
-  skillPoints: 1
+  skillPoints: 100
   health: 100
-  maxHealth: 300
+  maxHealth: 100
   maxMana: 100
   maxStrength: 100
   skill: {fileID: 5921973047236327947, guid: e326ea83c81157b4fb8d48dab9daf7a0, type: 3}
