@@ -7,47 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     // Debug.unityLogger.Log(stats.ToString());
-        
-    //     // Check for collision with monsters
-    //     Collider[] hitArr = Physics.OverlapSphere(this.transform.position, 5f, 6);
-    //     Debug.Log($"Detected {hitArr.Length} colliders in OverlapSphere.");
-
-    //     if (hitArr.Length == 0)
-    //     {
-    //         return;
-    //     }
-
-    //     foreach (Collider hit in hitArr)
-    //     {
-    //         if (hit.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-    //         {
-    //             Debug.unityLogger.Log("Monster hit!");
-
-    //             SceneChangeTrigger scriptComponent = hit.gameObject.GetComponent<SceneChangeTrigger>();
-    //             scriptComponent.battleScene = "devBattle";
-    //             scriptComponent.specifiedMonster = hit.gameObject;
-
-    //             // GC_Overworld gcOverworld = Object.FindAnyObjectByType<GC_Overworld>();
-
-    //             // if (gcOverworld == null)
-    //             // {
-    //             //     Debug.unityLogger.Log("GC_Overworld not found!");
-    //             //     return;
-    //             // }
-    //             // else {
-    //             //     Debug.unityLogger.Log("GC_Overworld found!");
-    //             //     gcOverworld.TransitionToBattle();
-    //             //     Destroy(hit.gameObject);
-    //             // } 
-    //         }
-    //     }
-    // }
-
     private GameObject specifiedMonster;
     private string battleScene;
 
@@ -59,6 +18,9 @@ public class Player : MonoBehaviour
             
             battleScene = "devBattle";
             specifiedMonster = other.gameObject;
+
+            SetInvisible(specifiedMonster);
+
             DontDestroyOnLoad(specifiedMonster);
             Debug.Log($"Collided with monster: {specifiedMonster.name}");
 
@@ -80,6 +42,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void SetInvisible(GameObject monster) {
+        // Disable the renderer on the specified monster and its children
+        Renderer[] renderers = monster.GetComponentsInChildren<Renderer>(true); // Get all renderers, including inactive ones
+        foreach (Renderer renderer in renderers) {
+            renderer.enabled = false; // Disable each renderer
+        }
+    }
     private void OnBattleSceneLoaded(Scene scene, LoadSceneMode mode) {
         Debug.Log("Battle Scene Loaded!");
 
