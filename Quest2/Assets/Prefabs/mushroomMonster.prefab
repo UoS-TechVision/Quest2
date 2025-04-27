@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: d60fae210148346378c4e1a7a2389c8f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: d60fae210148346378c4e1a7a2389c8f, type: 3}
       propertyPath: m_Layer
       value: 6

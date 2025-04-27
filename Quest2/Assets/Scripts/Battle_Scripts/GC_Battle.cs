@@ -42,8 +42,6 @@ public class GC_Battle : MonoBehaviour
     {
         Debug.Log("Loaded with Scaling of " + BattleInfo.difficultyScaling);
         state = BattleState.Start;
-        Transfer transfer = GameObject.FindAnyObjectByType<Transfer>();
-
         // Wait for the enemy to be initialized/loaded before proceeding
         StartCoroutine(WaitForEnemyToLoad());
     }
@@ -301,23 +299,5 @@ public class GC_Battle : MonoBehaviour
         {
             return;
         }
-    }
-
-    void TransitionToOverworld()
-    {
-        overworldScene = "devOverworld";
-        //Ensure we're not trying to transition to a scene that doesn't exist
-        if (string.IsNullOrEmpty(overworldScene))
-        {
-            Debug.LogWarning("Warning: Invalid Overworld Scene Name!");
-            return;
-        }
-
-        //Destroying the enemy object to prevent it from persisting in the Overworld scene
-        Destroy(enemyObj);
-
-        //Transition to the Overworld scene
-        Debug.Log("Transitioning to Overworld Scene!");
-        SceneManager.LoadScene(overworldScene, LoadSceneMode.Single);
     }
 }   

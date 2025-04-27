@@ -24,9 +24,6 @@ public class Player : MonoBehaviour
 
             // Disable all overworld objects except the player and enemy
             DisableOverworldObjects();
-
-            //sets up callback once scene is loaded -> call OnBattleSceneLoaded
-            SceneManager.sceneLoaded += OnBattleSceneLoaded;
             
             //Load the Battle Scene
             Debug.Log("Transitioning to Battle Scene!");
@@ -55,24 +52,5 @@ public class Player : MonoBehaviour
             renderer.enabled = false; // Disable each renderer
         }
     }
-    private void OnBattleSceneLoaded(Scene scene, LoadSceneMode mode) {
-        Debug.Log("Battle Scene Loaded!");
-
-        if (scene.name == battleScene)
-        {
-            //Unregister the callback
-            SceneManager.sceneLoaded -= OnBattleSceneLoaded;
-            
-            //Get Transfer Object to pass references to the Battle Controller
-            Transfer transferObj = GameObject.FindFirstObjectByType<Transfer>();
-            if (transferObj != null) {
-                //getting player and enemy references
-                transferObj.setPlayerObj(GameObject.FindWithTag("Player"));
-                transferObj.setEnemyObj(specifiedMonster);
-                Debug.Log($"Transfer monster: {specifiedMonster.name}");
-            } else{
-                Debug.LogWarning("Warning: Could not find Battle Controller in Battle Scene!");
-            }
-        }
-    }
+    
 }
