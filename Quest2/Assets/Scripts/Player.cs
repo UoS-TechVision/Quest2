@@ -20,28 +20,34 @@ public class Player : MonoBehaviour
             specifiedMonster = other.gameObject;
 
             SetInvisible(specifiedMonster);
-
-            DontDestroyOnLoad(specifiedMonster);
             Debug.Log($"Collided with monster: {specifiedMonster.name}");
 
-            //Saving overworld state to return to
-            OverworldManager overworldManager = GameObject.FindFirstObjectByType<OverworldManager>();
-            if (overworldManager != null) {
-                overworldManager.SaveOverworldState();
-                Debug.Log("Overworld state saved!");
-            } else{
-                Debug.LogWarning("Warning: Could not find Overworld Manager in Overworld Scene!");
-            }
+            // Disable all overworld objects except the player and enemy
+            DisableOverworldObjects();
 
             //sets up callback once scene is loaded -> call OnBattleSceneLoaded
             SceneManager.sceneLoaded += OnBattleSceneLoaded;
             
             //Load the Battle Scene
             Debug.Log("Transitioning to Battle Scene!");
-            SceneManager.LoadScene(battleScene, LoadSceneMode.Single);
+            SceneManager.LoadScene(battleScene, LoadSceneMode.Additive);
         }
     }
 
+    private void DisableOverworldObjects() {
+        // Get all root objects in the current scene (the overworld scene)
+        foreach (GameObject obj in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            if (obj.CompareTag("Player") || obj == specifiedMonster)
+            {
+                // Keep the player and the enemy object active
+                continue;
+            }
+
+            // Disable all other objects
+            obj.SetActive(false);
+        }
+    }
     private void SetInvisible(GameObject monster) {
         // Disable the renderer on the specified monster and its children
         Renderer[] renderers = monster.GetComponentsInChildren<Renderer>(true); // Get all renderers, including inactive ones

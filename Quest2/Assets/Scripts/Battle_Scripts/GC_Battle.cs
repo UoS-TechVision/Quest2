@@ -256,17 +256,21 @@ public class GC_Battle : MonoBehaviour
             enemyName = enemyName.Replace("Enemy", "");
             dialogueText.text = "You have defeated " + enemyName + "!!";
 
-            //Enemy defeated - will be removed in OverworldManager.loadOverworldState()
-            OverworldManager overworldManager = GameObject.FindFirstObjectByType<OverworldManager>();
-            overworldManager.MarkEnemyAsDefeated(enemyObj.name);
+            SceneManager.UnloadSceneAsync("devBattle");
 
-            Destroy(enemyObj);
-
-            TransitionToOverworld();
+            EnableOverworldObjects();
         }
         else if (state == BattleState.LOST)
         {
             dialogueText.text = "You have lost....";
+        }
+    }
+
+    private void EnableOverworldObjects() {
+        // Enable all objects in the overworld scene
+        foreach (GameObject obj in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            obj.SetActive(true);
         }
     }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GC_LoadEnemy : MonoBehaviour
 {
@@ -46,10 +47,31 @@ public class GC_LoadEnemy : MonoBehaviour
         // Loop through the prefabs to find the matching monster
         foreach (var prefab in monsterPrefabs) {
             if (prefab.name == monsterName) {
-                // Instantiate the matching prefab at the position of this GameObject (the empty GameObject)
-                Instantiate(prefab, transform.position, Quaternion.identity);
-                Debug.Log($"Loaded correct monster prefab: {prefab.name}");
-                break;
+                // Get the currently active battle scene, if loaded
+                Scene battleScene = SceneManager.GetSceneByName("devBattle");
+
+                if (battleScene.isLoaded) {
+                    // Instantiate the matching prefab into the battle scene
+                    GameObject instantiatedMonster = Instantiate(prefab, transform.position, Quaternion.identity);
+
+                    // Set the instantiated object to be part of the battle scene
+                    SceneManager.MoveGameObjectToScene(instantiatedMonster, battleScene);
+
+                    Debug.Log($"Loaded correct monster prefab into battle scene: {prefab.name}");
+
+                    // Disable the collider of the specified monster and remove it after instantiation
+                    Collider monsterCollider = specifiedMonster.GetComponent<Collider>();
+                    if (monsterCollider != null) {
+                        monsterCollider.enabled = false;
+                    }
+
+                    // Destroy the specified monster object once the prefab is instantiated
+                    Destroy(specifiedMonster);
+
+                    break;
+                } else {
+                    Debug.LogWarning("Battle scene is not loaded yet!");
+                }
             }
         }
     }
