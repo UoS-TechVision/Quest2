@@ -62,15 +62,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e4ba3a4ed75204bbfaafee1a8e2872d5, type: 3}
       propertyPath: m_Name
-      value: basilisk
+      value: basilisk(Clone)Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e4ba3a4ed75204bbfaafee1a8e2872d5, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e4ba3a4ed75204bbfaafee1a8e2872d5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: e4ba3a4ed75204bbfaafee1a8e2872d5, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -78,43 +82,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e4ba3a4ed75204bbfaafee1a8e2872d5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7434307825715888877}
+      addedObject: {fileID: 6493368828595240993}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e4ba3a4ed75204bbfaafee1a8e2872d5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6493368828595240993}
+      addedObject: {fileID: -1267204370464233008}
   m_SourcePrefab: {fileID: 100100000, guid: e4ba3a4ed75204bbfaafee1a8e2872d5, type: 3}
 --- !u!1 &5395021321085970222 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e4ba3a4ed75204bbfaafee1a8e2872d5, type: 3}
   m_PrefabInstance: {fileID: 5052931714061556351}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &7434307825715888877
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5395021321085970222}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!65 &6493368828595240993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -134,5 +111,27 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1267204370464233008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5395021321085970222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0610e7727d74e00b124d7c44ce80d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: Basilisk
+  unitLevel: 1
+  strength: 25
+  mana: 100
+  skillPoints: 1
+  health: 100
+  maxHealth: 100
+  maxMana: 100
+  maxStrength: 100
+  skill: {fileID: 7706192722005487702, guid: a2b05c328296a5540ad7a5a882748cf6, type: 3}

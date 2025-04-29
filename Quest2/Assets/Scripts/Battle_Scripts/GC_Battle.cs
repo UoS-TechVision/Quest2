@@ -42,10 +42,18 @@ public class GC_Battle : MonoBehaviour
     {
         Debug.Log("Loaded with Scaling of " + BattleInfo.difficultyScaling);
         state = BattleState.Start;
-        Transfer transfer = GameObject.FindAnyObjectByType<Transfer>();
+        // Wait for the enemy to be initialized/loaded before proceeding
+        StartCoroutine(WaitForEnemyToLoad());
+    }
 
+    IEnumerator WaitForEnemyToLoad() {
+        // Wait until the enemy is assigned and ready
+        while (enemyObj == null)
+        {
+            enemyObj = GameObject.FindGameObjectWithTag("Enemy");
+            yield return null; // Wait for the next frame before checking again
+        }
         playerObj = GameObject.FindGameObjectWithTag("Player");
-        enemyObj = GameObject.FindGameObjectWithTag("Enemy");
 
 /*        GameObject playerGO = Instantiate(playerObj, playerSpawnPos);
         playerGO.transform.parent = playerSpawnPos;
@@ -63,15 +71,15 @@ public class GC_Battle : MonoBehaviour
         enemyHUD.SetHUD(enemyUnit);
 
         StartCoroutine(SetUpBattle());
-
     }
 
 
     IEnumerator SetUpBattle()
     {
-
+        string enemyName = enemyObj.name.Replace("(Clone)", "");
+        enemyName = enemyName.Replace("Enemy", "");
         //Delete message - When testing in devOverworld: when performing collision, if you are still holding onto object during transition -> enemy will not be placed on platform
-        dialogueText.text = "You have encountered a " + enemyObj.name + " . FIGHT!!";
+        dialogueText.text = "You have encountered a " + enemyName + " . FIGHT!!";
 
         yield return new WaitForSeconds(2f);
         state = BattleState.PlayerTurn;
@@ -115,7 +123,6 @@ public class GC_Battle : MonoBehaviour
             state = BattleState.EnemyTurn;
             StartCoroutine(EnemyTurn());
         }
-
 
         yield return new WaitForSeconds(2f);
     }
@@ -177,7 +184,9 @@ public class GC_Battle : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
-        dialogueText.text = enemyUnit.name + "'s turn.....";
+        string enemyName = enemyObj.name.Replace("(Clone)", "");
+        enemyName = enemyName.Replace("Enemy", "");
+        dialogueText.text = enemyName + "'s turn.....";
 
         yield return new WaitForSeconds(2f);
 
@@ -192,7 +201,7 @@ public class GC_Battle : MonoBehaviour
         // Basic Attack
         if (move == 0)
         {
-            dialogueText.text = enemyUnit.name + " attacks!";
+            dialogueText.text = enemyName + " attacks!";
 
             yield return new WaitForSeconds(2f);
 
@@ -204,8 +213,7 @@ public class GC_Battle : MonoBehaviour
         {
             GameObject skillProjectile = Instantiate(enemyUnit.skill.gameObject, enemySkillSpawnPos.transform.position, Quaternion.identity);
             skillProjectile.GetComponent<Rigidbody>().AddRelativeForce(ComputeVector(false)); //true = Enemy
-
-            dialogueText.text = enemyUnit.name + " uses " + enemyUnit.skill.skillName;
+            dialogueText.text = enemyName + " uses " + enemyUnit.skill.skillName;
             yield return new WaitUntil(() => skillProjectile == false);
             if (Random.value < playerUnit.skill.critChance)
             {
@@ -225,8 +233,6 @@ public class GC_Battle : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-
-
         if (isDead)
         {
             state = BattleState.LOST;
@@ -244,17 +250,25 @@ public class GC_Battle : MonoBehaviour
     {
         if (state == BattleState.WON)
         {
-            dialogueText.text = "You have defeated " + enemyUnit.name + "!!";
+            string enemyName = enemyObj.name.Replace("(Clone)", "");
+            enemyName = enemyName.Replace("Enemy", "");
+            dialogueText.text = "You have defeated " + enemyName + "!!";
 
-            //Enemy defeated - will be removed in OverworldManager.loadOverworldState()
-            OverworldManager overworldManager = GameObject.FindFirstObjectByType<OverworldManager>();
-            overworldManager.MarkEnemyAsDefeated(enemyObj.name);
+            SceneManager.UnloadSceneAsync("devBattle");
 
-            TransitionToOverworld();
+            EnableOverworldObjects();
         }
         else if (state == BattleState.LOST)
         {
             dialogueText.text = "You have lost....";
+        }
+    }
+
+    private void EnableOverworldObjects() {
+        // Enable all objects in the overworld scene
+        foreach (GameObject obj in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            obj.SetActive(true);
         }
     }
 
@@ -270,7 +284,6 @@ public class GC_Battle : MonoBehaviour
         {
             return;
         }
-
     }
 
 
@@ -286,25 +299,5 @@ public class GC_Battle : MonoBehaviour
         {
             return;
         }
-
-
-    }
-
-    void TransitionToOverworld()
-    {
-        overworldScene = "devOverworld";
-        //Ensure we're not trying to transition to a scene that doesn't exist
-        if (string.IsNullOrEmpty(overworldScene))
-        {
-            Debug.LogWarning("Warning: Invalid Overworld Scene Name!");
-            return;
-        }
-
-        //Destroying the enemy object to prevent it from persisting in the Overworld scene
-        Destroy(enemyObj);
-
-        //Transition to the Overworld scene
-        Debug.Log("Transitioning to Overworld Scene!");
-        SceneManager.LoadScene(overworldScene, LoadSceneMode.Single);
     }
 }   

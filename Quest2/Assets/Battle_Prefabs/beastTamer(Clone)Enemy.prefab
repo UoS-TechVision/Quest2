@@ -62,15 +62,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3c23fa082cf26ba4eb4833c9443d2de4, type: 3}
       propertyPath: m_Name
-      value: beastTamer
+      value: beastTamer(Clone)Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3c23fa082cf26ba4eb4833c9443d2de4, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3c23fa082cf26ba4eb4833c9443d2de4, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 3c23fa082cf26ba4eb4833c9443d2de4, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -78,43 +82,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c23fa082cf26ba4eb4833c9443d2de4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7177341445784098333}
+      addedObject: {fileID: 8821809481151879229}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c23fa082cf26ba4eb4833c9443d2de4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8821809481151879229}
+      addedObject: {fileID: 3780332905554497016}
   m_SourcePrefab: {fileID: 100100000, guid: 3c23fa082cf26ba4eb4833c9443d2de4, type: 3}
 --- !u!1 &7040774302330490194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c23fa082cf26ba4eb4833c9443d2de4, type: 3}
   m_PrefabInstance: {fileID: 7887125923182850051}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &7177341445784098333
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7040774302330490194}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!65 &8821809481151879229
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -134,5 +111,27 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3780332905554497016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7040774302330490194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0610e7727d74e00b124d7c44ce80d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: Beast Tamer
+  unitLevel: 1
+  strength: 25
+  mana: 100
+  skillPoints: 1
+  health: 100
+  maxHealth: 100
+  maxMana: 100
+  maxStrength: 100
+  skill: {fileID: 5921973047236327947, guid: e326ea83c81157b4fb8d48dab9daf7a0, type: 3}
