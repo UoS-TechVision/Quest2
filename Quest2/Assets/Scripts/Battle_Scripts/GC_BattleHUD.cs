@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class GC_BattleHUD : MonoBehaviour
 {
@@ -20,7 +21,9 @@ public class GC_BattleHUD : MonoBehaviour
         manaSlider.maxValue= unit.MaxMana;
         manaSlider.value = unit.Mana;
 
-        nameText.text = unit.name;
+        string unitName = unit.name.Replace("(Clone)", "");
+        unitName = unitName.Replace("Enemy", "");
+        nameText.text = unitName;
         levelText.text = "Lvl. " + unit.unitLevel;
 
         healthText.text = unit.Health.ToString() + "/" + unit.MaxHealth;
