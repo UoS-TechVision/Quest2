@@ -565,7 +565,6 @@ MonoBehaviour:
   m_SceneViewState:
     showFog: 1
     showMaterialUpdate: 0
-    showSkybox: 1
     showFlares: 1
     showImageEffects: 1
   grid:
