@@ -255,6 +255,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: 1.6
+  moveSpeed: 6
+  raycastDistance: 1
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!54 &243944440203005249
 Rigidbody:
   m_ObjectHideFlags: 0

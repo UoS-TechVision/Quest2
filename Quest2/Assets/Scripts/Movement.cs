@@ -5,49 +5,53 @@ public class Movement : MonoBehaviour
 {
     private Rigidbody rb;
 
-    [SerializeField]
-    private float gridSize = 1.6f; // The distance between grid points
-    private float moveSpeed = 6.0f; // Adjust this value to change the speed
+    [SerializeField] private float gridSize = 1.6f; // Distance between grid points
+    [SerializeField] private float moveSpeed = 6.0f; // Speed of movement
+    [SerializeField] private float raycastDistance = 1.0f; // Distance to check for obstacles
+    [SerializeField] private LayerMask obstacleLayer; // Assign in Inspector (e.g., Wall layer)
 
-    private Vector3 targetPosition; // The next position to move to
-    private bool isMoving = false; // Prevent overlapping movements
-
-    private Transform cameraTransform;
-    private Vector3 cameraOffset;
-
+    private Vector3 targetPosition;
+    private bool isMoving = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        targetPosition = rb.position; // Initialize the target position to the starting position
+        targetPosition = rb.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (isMoving) return; // Ignore input if already moving
+        if (isMoving) return;
 
-        // Handle movement directions and rotations
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D)) {
+            TryMove(Vector3.right);
+        } else if (Input.GetKeyDown(KeyCode.A)) {
+            TryMove(Vector3.left);
+        } else if (Input.GetKeyDown(KeyCode.W)) {
+            TryMove(Vector3.forward);
+        } else if (Input.GetKeyDown(KeyCode.S)) {
+            TryMove(Vector3.back);
+        }
+    }
+
+    private void TryMove(Vector3 direction)
+    {
+        if (CanMove(direction))
         {
-            targetPosition += new Vector3(gridSize, 0f, 0f); // Move right
+            targetPosition += direction * gridSize;
             isMoving = true;
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+    }
+
+    private bool CanMove(Vector3 direction)
+    {
+        // Cast a ray to detect obstacles
+        if (Physics.Raycast(transform.position, direction, raycastDistance, obstacleLayer))
         {
-            targetPosition += new Vector3(-gridSize, 0f, 0f); // Move left
-            isMoving = true;
+            Debug.Log("Blocked by obstacle in direction: " + direction);
+            return false;
         }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            targetPosition += new Vector3(0f, 0f, gridSize); // Move forward
-            isMoving = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            targetPosition += new Vector3(0f, 0f, -gridSize); // Move backward
-            isMoving = true;
-        }
+        return true;
     }
 
     private void FixedUpdate()
@@ -59,15 +63,13 @@ public class Movement : MonoBehaviour
     {
         if (!isMoving) return;
 
-        // Smoothly move the character toward the target position
         Vector3 newPosition = Vector3.MoveTowards(rb.position, targetPosition, moveSpeed * Time.fixedDeltaTime);
         rb.MovePosition(newPosition);
 
-        // Check if the character has reached the target position
         if (Vector3.Distance(rb.position, targetPosition) < 0.01f)
         {
-            rb.MovePosition(targetPosition); // Snap to the exact target position
-            isMoving = false; // Allow new inputs
+            rb.MovePosition(targetPosition); // Snap to exact point
+            isMoving = false;
         }
     }
 }
