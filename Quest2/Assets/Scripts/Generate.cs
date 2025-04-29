@@ -22,7 +22,6 @@ public class Generate : MonoBehaviour
     {
         Instantiate(StartRoom, new Vector3(0, 0, 0), new Quaternion(0,180,0,1), this.transform);
 
-        GameObject previousRoom = Rooms[UnityEngine.Random.Range(0, Rooms.Length)];
         for (int i = 1; i <= nRooms; i++)
             {   
                 // spawns player
@@ -35,29 +34,16 @@ public class Generate : MonoBehaviour
                     Instantiate(Player, bottomLeft, Quaternion.identity);
                 }
 
-                // Deactivate BossSpawner script on non-5th rooms
-                BossSpawner bossSpawner = previousRoom.GetComponent<BossSpawner>();
-                if (i % 5 != 0 || i == 0) 
-                {
-                    if (bossSpawner != null) 
-                    {
-                        bossSpawner.enabled = false;
-                    }
+                GameObject currentRoom = Instantiate(Rooms[UnityEngine.Random.Range(0, Rooms.Length)], new Vector3(i * 12.8f, 0, 0), Quaternion.identity, this.transform);
+                BossSpawner bossSpawner = currentRoom.GetComponent<BossSpawner>();
+                
+                if (i % 5 != 0) {
+                    // Deactivate BossSpawner script on non-5th rooms
+                    bossSpawner.enabled = false;
                 } else {
                     // Enable BossSpawner script on 5th rooms
                     bossSpawner.enabled = true;
                 }
-
-                if (UnityEngine.Random.Range(0f, 1f) < cohesion)
-                {
-                    Instantiate(previousRoom, new Vector3(i * 12.8f, 0, 0), Quaternion.identity, this.transform);
-                }
-                else
-                {
-                    previousRoom = Instantiate(Rooms[UnityEngine.Random.Range(0, Rooms.Length)], new Vector3(i * 12.8f, 0, 0), Quaternion.identity, this.transform);
-                }
-            }
-            
-        Instantiate(StartRoom, new Vector3((nRooms + 1) * 12.8f, 0, 0), Quaternion.identity, this.transform);
+            }            
     }
 }

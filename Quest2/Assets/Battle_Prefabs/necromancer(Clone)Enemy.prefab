@@ -60,6 +60,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 5ee932f9e6e0c461197cc45990a0dafe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.30070582
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 5ee932f9e6e0c461197cc45990a0dafe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.95371693
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 5ee932f9e6e0c461197cc45990a0dafe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 5ee932f9e6e0c461197cc45990a0dafe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -145
+      objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 5ee932f9e6e0c461197cc45990a0dafe, type: 3}
       propertyPath: m_Layer
       value: 0

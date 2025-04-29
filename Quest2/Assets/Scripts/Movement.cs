@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     private float gridSize = 1.6f; // The distance between grid points
-    private float moveSpeed = 1.8f; // Adjust this value to change the speed
+    private float moveSpeed = 6.0f; // Adjust this value to change the speed
 
     private Vector3 targetPosition; // The next position to move to
     private bool isMoving = false; // Prevent overlapping movements
