@@ -26,7 +26,7 @@ public class GC_Battle : MonoBehaviour
     Unit playerUnit;
     public GC_BattleHUD playerHUD;
     public GC_BattleHUD enemyHUD;
-
+    [SerializeField] private GameObject PlayAgainScreen;
     Unit enemyUnit;
 
     public TMP_Text dialogueText;
@@ -254,13 +254,18 @@ public class GC_Battle : MonoBehaviour
             enemyName = enemyName.Replace("Enemy", "");
             dialogueText.text = "You have defeated " + enemyName + "!!";
 
-            SceneManager.UnloadSceneAsync("devBattle");
-
-            EnableOverworldObjects();
+            if (enemyName == "basilisk" || enemyName == "beastTamer" || enemyName == "Leonardo" || enemyName == "phantom_warrior.vox") {
+                PlayAgainScreen.SetActive(true); 
+            }
+            else { 
+                SceneManager.UnloadSceneAsync("devBattle");
+                EnableOverworldObjects();
+            }
         }
         else if (state == BattleState.LOST)
         {
             dialogueText.text = "You have lost....";
+            PlayAgainScreen.SetActive(true); 
         }
     }
 
